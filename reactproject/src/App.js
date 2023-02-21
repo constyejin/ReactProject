@@ -23,7 +23,6 @@ function App() {
       <div className="black-nav">
         <h3 style={{color : 'red'}}>BLOG</h3>
       </div>
-
       <div className="list">
         <h4>{title[0]} <span onClick={()=>{setLike(like + 1)}}>👍</span> {like}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
@@ -42,6 +41,11 @@ function App() {
         <h4>{title[2]}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
       </div>
+      <button onClick={()=>{
+        let copy = [...title];
+        copy.sort();
+        setTitle(copy);
+      }}>가나다순 정렬</button>
     </div>
   );
 }
