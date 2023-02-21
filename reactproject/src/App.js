@@ -15,15 +15,24 @@ function App() {
   let [title, setTitle] = useState(['DW아카데미 501호', 'DW아카데미 503호', 'DW아카데미 201호']);
   // let [title2, setTitle2] = useState('DW아카데미 503호');
   // let [title3, setTitle3] = useState('DW아카데미 201호');
+  // 왼쪽 : 실제 state값 / 오른쪽 : 변경될 state값
+  let [like, setLike] = useState(0);
 
   return (
     <div className="App">
       <div className="black-nav">
         <h3 style={{color : 'red'}}>BLOG</h3>
       </div>
+
       <div className="list">
-        <h4>{title[0]}</h4>
+        <h4>{title[0]} <span onClick={()=>{setLike(like + 1)}}>👍</span> {like}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
+        <button onClick={()=>{
+          let titleCopy = [...title];
+          titleCopy[0] = '리액트 너무 재밌어요!';
+          console.log(title == titleCopy)
+          setTitle(titleCopy);
+        }}>Click</button>
       </div>
       <div className="list">
         <h4>{title[1]}</h4>
