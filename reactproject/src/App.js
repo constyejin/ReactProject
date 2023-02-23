@@ -21,6 +21,7 @@ function App() {
   // let [title3, setTitle3] = useState('DW아카데미 201호');
   // 왼쪽 : 실제 state값 / 오른쪽 : 변경될 state값
   let [like, setLike] = useState(0);
+  let [modal, setMoal] = useState(false);
 
   return (
     <div className="App">
@@ -61,12 +62,18 @@ function App() {
         <p>안녕하세요. 저는 이예진 입니다.</p>
       </div>
       <div className="list">
-        <h4>{title[2]}</h4>
+        <h4 onClick={()=>{setMoal(!modal)}}>{title[2]}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
       </div>
 
-      <Modal />
-      
+      {
+        // 조건문 대신 삼항연산자 사용
+        // 조건식 ? 참일때 실행 할 코드 : 거짓일때 실행 할 코드
+        // 1 == 1 ? 'ㅇㅇ' : 'ㄴㄴ'
+        // null은 텅빈 값
+        modal == true ? <Modal/> : null
+      }
+
       <button
         onClick={() => {
           let copy = [...title];
@@ -79,6 +86,18 @@ function App() {
     </div>
   );
 }
+
+// let과 const
+// 실수로 수정 했을 때 에러 메세지 출력 (실수 방지!)
+// let Modal = () => {
+//   return(
+//     <div className="modal">
+//       <h4>제목 </h4>
+//       <p>날짜</p>
+//       <p>Lorem ipsum dolor sit.</p>
+//   </div>
+//   )
+// }
 
 function Modal() {
   return(
