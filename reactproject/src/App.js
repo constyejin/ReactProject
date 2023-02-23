@@ -63,7 +63,7 @@ function App() {
         title.map(function(a, i){
           return (
             <div className="list" key={i}>
-              <h4>{a} <span onClick={() => {
+              <h4 onClick={()=>{setMoal(!modal)}}>{a} <span onClick={() => {
                 let copy = [...like];
                 copy[i] = copy[i] + 1;
                 setLike(copy)
@@ -79,7 +79,7 @@ function App() {
         // 조건식 ? 참일때 실행 할 코드 : 거짓일때 실행 할 코드
         // 1 == 1 ? 'ㅇㅇ' : 'ㄴㄴ'
         // null은 텅빈 값
-        modal == true ? <Modal/> : null
+        modal == true ? <Modal title={title} bgColor={'dodgerblue'} color={'#fff'}/> : null
       }
 
       <button
@@ -107,12 +107,14 @@ function App() {
 //   )
 // }
 
-function Modal() {
+
+function Modal(props) {
   return(
-    <div className="modal">
-      <h4>제목 </h4>
+    <div className="modal" style={{background: props.bgColor, color : props.color}}>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>Lorem ipsum dolor sit.</p>
+      <button>글수정</button>
     </div>
   )
 }
