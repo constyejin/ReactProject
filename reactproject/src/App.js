@@ -20,26 +20,19 @@ function App() {
   // let [title2, setTitle2] = useState('DW아카데미 503호');
   // let [title3, setTitle3] = useState('DW아카데미 201호');
   // 왼쪽 : 실제 state값 / 오른쪽 : 변경될 state값
-  let [like, setLike] = useState(0);
+  let [like, setLike] = useState([0,0,0]);
   let [modal, setMoal] = useState(false);
+
 
   return (
     <div className="App">
       <div className="black-nav">
         <h3 style={{ color: "red" }}>BLOG</h3>
       </div>
-      <div className="list">
-        <h4>
+      {/* <div className="list">
+        <h4> 
           {title[0]}{" "}
-          <span
-            onClick={() => {
-              setLike(like + 1);
-            }}
-          >
-            👍
-          </span>{" "}
-          {like}
-        </h4>
+          <span onClick={() => {setLike(like + 1);}}>👍</span>{" "} {like} </h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
         <button
           onClick={() => {
@@ -64,7 +57,22 @@ function App() {
       <div className="list">
         <h4 onClick={()=>{setMoal(!modal)}}>{title[2]}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
-      </div>
+      </div> */}
+
+      {
+        title.map(function(a, i){
+          return (
+            <div className="list" key={i}>
+              <h4>{a} <span onClick={() => {
+                let copy = [...like];
+                copy[i] = copy[i] + 1;
+                setLike(copy)
+              }}>👍</span>{like[i]}</h4>
+              <p>안녕하세요. 저는 이예진 입니다.</p>
+            </div>
+          )
+        })
+      }
 
       {
         // 조건문 대신 삼항연산자 사용
