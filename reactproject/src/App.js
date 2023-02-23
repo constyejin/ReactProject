@@ -64,6 +64,9 @@ function App() {
         <h4>{title[2]}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
       </div>
+
+      <Modal />
+      
       <button
         onClick={() => {
           let copy = [...title];
@@ -75,6 +78,16 @@ function App() {
       </button>
     </div>
   );
+}
+
+function Modal() {
+  return(
+    <div className="modal">
+      <h4>제목 </h4>
+      <p>날짜</p>
+      <p>Lorem ipsum dolor sit.</p>
+    </div>
+  )
 }
 
 export default App;

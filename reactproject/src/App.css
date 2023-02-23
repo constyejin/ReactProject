@@ -25,4 +25,12 @@ button {
   border: 0;
   outline: 0;
   border-radius: 5px;
+  margin-top: 10px;
+}
+
+.modal {
+  background-color: #eee;
+  margin-top: 20px;
+  padding: 20px;
+
 }
