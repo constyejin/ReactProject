@@ -20,7 +20,7 @@ function App() {
   // let [title2, setTitle2] = useState('DW아카데미 503호');
   // let [title3, setTitle3] = useState('DW아카데미 201호');
   // 왼쪽 : 실제 state값 / 오른쪽 : 변경될 state값
-  let [like, setLike] = useState([0,0,0]);
+  let [like, setLike] = useState([0,0,0]);        
   let [modal, setMoal] = useState(false);
 
 
@@ -79,7 +79,7 @@ function App() {
         // 조건식 ? 참일때 실행 할 코드 : 거짓일때 실행 할 코드
         // 1 == 1 ? 'ㅇㅇ' : 'ㄴㄴ'
         // null은 텅빈 값
-        modal == true ? <Modal title={title} bgColor={'dodgerblue'} color={'#fff'}/> : null
+        modal == true ? <Modal title={title} setTitle={setTitle} bgColor={'dodgerblue'} color={'#fff'}/> : null
       }
 
       <button
@@ -107,14 +107,15 @@ function App() {
 //   )
 // }
 
-
 function Modal(props) {
   return(
     <div className="modal" style={{background: props.bgColor, color : props.color}}>
       <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>Lorem ipsum dolor sit.</p>
-      <button>글수정</button>
+      <button onClick={()=>{
+        props.setTitle(['리액트 너무 재밌어요!', ...props.title.slice(1)])
+        }}>글수정</button>
     </div>
   )
 }
