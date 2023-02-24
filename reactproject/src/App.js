@@ -31,6 +31,10 @@ function App() {
     setTitle([first, ...title])
   }
 
+  const removeList = ()=> {
+
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -77,6 +81,7 @@ function App() {
                 setLike(copy)
               }}>👍</span>{like[i]}</h4>
               <p>안녕하세요. 저는 {name[i]} 입니다.</p>
+              <button>글 삭제</button>
             </div>
           )
         })
