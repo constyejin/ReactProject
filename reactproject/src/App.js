@@ -24,6 +24,12 @@ function App() {
   let [like, setLike] = useState([0,0,0]);        
   let [modal, setMoal] = useState(false);
   let [modalTitle, setModalTitle] = useState(0);
+  let [input, setInput] = useState('');
+
+  const onCreate = () => {
+    const first = ['첫번째 글 제목!']
+    setTitle([first, ...title])
+  }
 
   return (
     <div className="App">
@@ -64,7 +70,8 @@ function App() {
         title.map(function(a, i){
           return (
             <div className="list" key={i}>
-              <h4 onClick={()=>{setMoal(!modal); setModalTitle(i)}}>{a} <span onClick={() => {
+              <h4 onClick={()=>{setMoal(!modal); setModalTitle(i)}}>{a} <span onClick={(e) => {
+                e.stopPropagation();
                 let copy = [...like];
                 copy[i] = copy[i] + 1;
                 setLike(copy)
@@ -80,6 +87,9 @@ function App() {
         <button onClick={()=>{setModalTitle(1)}}>글제목1</button>
         <button onClick={()=>{setModalTitle(2)}}>글제목2</button>
       </div>
+
+      {/* html과 다르게 JSX에서는 무조건 태그를 열었으면 닫아줘야한다 */}
+      <input onChange={(e)=>{setInput(e.target.value)}} />
 
       {
         // 조건문 대신 삼항연산자 사용
@@ -104,6 +114,8 @@ function App() {
         setName(copy);
       }}>이름변경
       </button>
+
+      <button onClick={onCreate}>리스트 추가</button>
     </div>
   );
 }
