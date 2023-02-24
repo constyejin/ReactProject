@@ -17,12 +17,13 @@ function App() {
     "DW아카데미 503호",
     "DW아카데미 201호",
   ]);
+  let [name, setName] = useState(['이름1', '이름2', '이름3'])
   // let [title2, setTitle2] = useState('DW아카데미 503호');
   // let [title3, setTitle3] = useState('DW아카데미 201호');
   // 왼쪽 : 실제 state값 / 오른쪽 : 변경될 state값
   let [like, setLike] = useState([0,0,0]);        
   let [modal, setMoal] = useState(false);
-
+  let [modalTitle, setModalTitle] = useState(0);
 
   return (
     <div className="App">
@@ -63,33 +64,45 @@ function App() {
         title.map(function(a, i){
           return (
             <div className="list" key={i}>
-              <h4 onClick={()=>{setMoal(!modal)}}>{a} <span onClick={() => {
+              <h4 onClick={()=>{setMoal(!modal); setModalTitle(i)}}>{a} <span onClick={() => {
                 let copy = [...like];
                 copy[i] = copy[i] + 1;
                 setLike(copy)
               }}>👍</span>{like[i]}</h4>
-              <p>안녕하세요. 저는 이예진 입니다.</p>
+              <p>안녕하세요. 저는 {name[i]} 입니다.</p>
             </div>
           )
         })
       }
+
+      <div>
+        <button onClick={()=>{setModalTitle(0)}}>글제목0</button>
+        <button onClick={()=>{setModalTitle(1)}}>글제목1</button>
+        <button onClick={()=>{setModalTitle(2)}}>글제목2</button>
+      </div>
 
       {
         // 조건문 대신 삼항연산자 사용
         // 조건식 ? 참일때 실행 할 코드 : 거짓일때 실행 할 코드
         // 1 == 1 ? 'ㅇㅇ' : 'ㄴㄴ'
         // null은 텅빈 값
-        modal == true ? <Modal title={title} setTitle={setTitle} bgColor={'dodgerblue'} color={'#fff'}/> : null
+        modal == true ? <Modal modalTitle={modalTitle} title={title}/> : null
       }
 
       <button
         onClick={() => {
-          let copy = [...title];
-          copy.sort();
-          setTitle(copy);
+          let copy = [...title]
+          copy = copy.sort()
+          setTitle(copy)
         }}
-      >
-        가나다순 정렬
+      >가나다순 정렬
+      </button>
+
+      <button onClick={()=>{
+        let copy = [...name]
+        copy = ['강해민', '백승호', '신보은']
+        setName(copy);
+      }}>이름변경
       </button>
     </div>
   );
@@ -109,13 +122,10 @@ function App() {
 
 function Modal(props) {
   return(
-    <div className="modal" style={{background: props.bgColor, color : props.color}}>
-      <h4>{props.title[0]}</h4>
-      <p>날짜</p>
+    <div className="modal">
+      <h4>{props.title[props.modalTitle]}</h4>
       <p>Lorem ipsum dolor sit.</p>
-      <button onClick={()=>{
-        props.setTitle(['리액트 너무 재밌어요!', ...props.title.slice(1)])
-        }}>글수정</button>
+      <button>글수정</button>
     </div>
   )
 }
