@@ -62,7 +62,7 @@ function App() {
         <h4>{title[1]}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
       </div>
-      <div className="list">
+      <div className="list"></div>
         <h4 onClick={()=>{setMoal(!modal)}}>{title[2]}</h4>
         <p>안녕하세요. 저는 이예진 입니다.</p>
       </div> */}
