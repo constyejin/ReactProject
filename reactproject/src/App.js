@@ -69,8 +69,6 @@ function App() {
 
       {
         title.map(function(a, i){
-
-          
           return (
             <div className="list" key={i}>
               <h4 onClick={()=>{setMoal(!modal); setModalTitle(i)}}>{a} <span onClick={(e) => {
@@ -82,7 +80,7 @@ function App() {
               <p>안녕하세요. 저는 {name[i]} 입니다.</p>
               <button onClick={()=>{
                 let copy = [...title];
-                copy = copy.splice(i, 1)
+                copy.splice(i, 1)
                 setTitle(copy)
               }}>글 삭제</button>
             </div>
@@ -99,6 +97,9 @@ function App() {
       {/* html과 다르게 JSX에서는 무조건 태그를 열었으면 닫아줘야한다 */}
       <div className="inpub-box">
         <input onChange={(e)=>{setInput(e.target.value)}} />
+        {/* {
+          input.value == null ? alert('텍스트를 입력하세요') : input
+        } */}
         <button onClick={()=>{
           let copy = [...title]
           copy.unshift(input)
