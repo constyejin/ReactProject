@@ -31,9 +31,6 @@ function App() {
     setTitle([first, ...title])
   }
 
-  const removeList = ()=> {
-
-  }
 
   return (
     <div className="App">
@@ -72,6 +69,8 @@ function App() {
 
       {
         title.map(function(a, i){
+
+          
           return (
             <div className="list" key={i}>
               <h4 onClick={()=>{setMoal(!modal); setModalTitle(i)}}>{a} <span onClick={(e) => {
@@ -81,7 +80,11 @@ function App() {
                 setLike(copy)
               }}>👍</span>{like[i]}</h4>
               <p>안녕하세요. 저는 {name[i]} 입니다.</p>
-              <button>글 삭제</button>
+              <button onClick={()=>{
+                let copy = [...title];
+                copy = copy.splice(i, 1)
+                setTitle(copy)
+              }}>글 삭제</button>
             </div>
           )
         })
@@ -94,7 +97,14 @@ function App() {
       </div>
 
       {/* html과 다르게 JSX에서는 무조건 태그를 열었으면 닫아줘야한다 */}
-      <input onChange={(e)=>{setInput(e.target.value)}} />
+      <div className="inpub-box">
+        <input onChange={(e)=>{setInput(e.target.value)}} />
+        <button onClick={()=>{
+          let copy = [...title]
+          copy.unshift(input)
+          setTitle(copy)
+        }}>글발행</button>
+      </div>
 
       {
         // 조건문 대신 삼항연산자 사용
