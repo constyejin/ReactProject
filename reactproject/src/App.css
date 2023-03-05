@@ -3,38 +3,3 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.black-nav {
-  display: flex;
-  width: 100%;
-  background-color: #000;
-  color: #fff;
-  font-size: 24px;
-  padding: 15px 0 15px 20px;
-}
-
-.list {
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
-}
-
-button {
-  width: 100px;
-  height: 30px;
-  background-color: #000;
-  color: #fff;
-  border: 0;
-  outline: 0;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.modal {
-  background-color: #eee;
-  margin-top: 20px;
-  padding: 20px;
-}
-
-.inpub-box input {
-  margin-right: 10px;
-}
