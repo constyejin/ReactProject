@@ -19,9 +19,9 @@ const comments = [
 function CommentList(props) {
     return (
         <div>
-            {comments.map((comment) => {
+            {comments.map((comment, i) => {
                 return (
-                    <Comment name={comment.name} comment={comment.comment} />
+                    <Comment name={comment.name} comment={comment.comment} key={i}/>
                 );
             })}
         </div>
