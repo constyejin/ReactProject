@@ -13,12 +13,18 @@ const comments = [
     },
     {
         name: "로로로",
-        comment: "리액트 리액트 리액트",
+        commenst: "리액트 리액트 리액트",
     },
 ];
 
 function CommentList(props) {
     const [commentList, setCommentList] = useState(comments);
+
+
+    const addComment = () => {
+      const add = {name: "히히히", comment: "아아아앙악!! 리액트!!"}
+      setCommentList([add, ...commentList])
+    }
 
     const deleteComment = (index) => {
         const newCommentList = [...commentList];
@@ -26,22 +32,25 @@ function CommentList(props) {
         setCommentList(newCommentList);
     };
     
-    return (
-        <div>
-            {
-                commentList.map((comment, i) => {
-                    return (
-                        <Comment 
-                            name={comment.name} 
-                            comment={comment.comment} 
-                            key={i} 
-                            onDelete={() => deleteComment(i)}
-                        />  
-                    );
-                })
-            }
-        </div>
-    );
+    let [input, setInput] = useState('');
+
+  return (
+    <div>
+      {
+        commentList.map((comment, i) => {
+          return (
+            <Comment 
+                name={comment.name} 
+                comment={comment.comment} 
+                key={i} 
+                onDelete={() => deleteComment(i)}
+            />  
+          );
+        })
+      }
+      <button onClick={addComment}>리스트 추가</button>
+    </div>
+  );
 }
 
 export default CommentList;
