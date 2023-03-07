@@ -56,6 +56,7 @@ function Comment(props) {
                 <span className='name-text' style={styles.nameText}>{props.name}</span>
                 <span className='commnet-text' style={styles.commentText}>{props.comment}</span>
             </div>
+            <button onClick={props.onDelete}>X</button>
         </div>
     );
 }

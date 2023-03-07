@@ -1,5 +1,6 @@
 import React from "react";
 import Comment from "./Comment";
+import { useState } from 'react';
 
 const comments = [
     {
@@ -17,13 +18,28 @@ const comments = [
 ];
 
 function CommentList(props) {
+    const [commentList, setCommentList] = useState(comments);
+
+    const deleteComment = (index) => {
+        const newCommentList = [...commentList];
+        newCommentList.splice(index,1);
+        setCommentList(newCommentList);
+    };
+    
     return (
         <div>
-            {comments.map((comment, i) => {
-                return (
-                    <Comment name={comment.name} comment={comment.comment} key={i}/>
-                );
-            })}
+            {
+                commentList.map((comment, i) => {
+                    return (
+                        <Comment 
+                            name={comment.name} 
+                            comment={comment.comment} 
+                            key={i} 
+                            onDelete={() => deleteComment(i)}
+                        />  
+                    );
+                })
+            }
         </div>
     );
 }
