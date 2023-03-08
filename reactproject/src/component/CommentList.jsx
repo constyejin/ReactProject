@@ -48,7 +48,7 @@ function CommentList(props) {
           );
         })
       }
-      <button onClick={addComment}>리스트 추가</button>
+      <button onClick={addComment}>글추가</button>
     </div>
   );
 }
