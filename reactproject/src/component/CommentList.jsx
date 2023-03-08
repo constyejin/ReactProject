@@ -13,17 +13,23 @@ const comments = [
     },
     {
         name: "로로로",
-        commenst: "리액트 리액트 리액트",
+        comment: "리액트 리액트 리액트",
     },
 ];
 
 function CommentList(props) {
     const [commentList, setCommentList] = useState(comments);
-
+    const [name, setName] = useState('');
+    const [content, setContent] = useState('');
 
     const addComment = () => {
-      const add = {name: "히히히", comment: "아아아앙악!! 리액트!!"}
-      setCommentList([add, ...commentList])
+      // const add = {name: "히히히", comment: "아아아앙악!! 리액트!!"}
+      // setCommentList([add, ...commentList])
+
+      const add = {name: name, comment: content}
+      setCommentList([add, ...commentList]);
+      setName('');
+      setContent('');
     }
 
     const deleteComment = (index) => {
@@ -32,7 +38,6 @@ function CommentList(props) {
         setCommentList(newCommentList);
     };
     
-    let [input, setInput] = useState('');
 
   return (
     <div>
@@ -48,6 +53,14 @@ function CommentList(props) {
           );
         })
       }
+
+      이름 : <input value={name} onChange={(e) => setName(e.target.value)}></input>
+      댓글 : <input value={content} onChange={(e) => setContent(e.target.value)} />
+
+      {/* <input onChange={(e)=>{setInput(e.target.value)}} /> */}
+        {/* {
+          input.value == null ? alert('텍스트를 입력하세요') : input
+        } */}
       <button onClick={addComment}>글추가</button>
     </div>
   );
