@@ -18,9 +18,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <CommentList/> */}
+      <CommentList/>
       {/* <SubmitButton/> */}
-      <New/>
+      {/* <New/> */}
     </div>
   );
 }
