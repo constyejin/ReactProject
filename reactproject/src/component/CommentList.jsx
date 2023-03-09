@@ -59,7 +59,6 @@ function CommentList(props) {
         setCommentList(newCommentList);
     };
     
-
   return (
     <div>
       {

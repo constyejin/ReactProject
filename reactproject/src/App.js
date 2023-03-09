@@ -9,6 +9,8 @@ import Comment from './component/Comment'
 import CommentList from './component/CommentList';
 import back from './react.png';
 import SubmitButton from './component/SubmitButton'
+import Modal from './component/Modal'
+import New from './0302state&map/New'
 
 
 function App() {
@@ -16,8 +18,9 @@ function App() {
 
   return (
     <div className="App">
-      <CommentList/>
-      <SubmitButton/>
+      {/* <CommentList/> */}
+      {/* <SubmitButton/> */}
+      <New/>
     </div>
   );
 }
