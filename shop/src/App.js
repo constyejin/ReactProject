@@ -7,85 +7,77 @@ import {
   Navbar,
   Container,
   Nav,
-  Card,
   Row,
   Col,
 } from "react-bootstrap";
 import "./App.css";
-import bgImage from "./images/쿼카.png";
-import data from "./data";
 import { useState } from "react";
-
+import data from "./data";
+import bgImage1 from "./images/쿼카.png";
+import bgImage2 from './images/bg.png'
+import {Routes, Route, Link} from 'react-router-dom';
 
 function App() {
-  let [items, setItems] = useState(data);
-// console.log(items[0].price)
+  let [shoes] = useState(data);
 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">Yejin Shop</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Link to="/" className='nav-link'>Home</Link>
+            <Link to="/detail" className='nav-link'>Detail</Link>
           </Nav>
         </Container>
       </Navbar>
 
-      {/* 코드 사이에 변수 넣는 방법 1.홑 따옴표 2. 백틱 */}
-      <div
-        className="main-bg"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      ></div>
+      <Routes>
+        <Route path='/' element={
+        <div>
+          <div className='main-bg' style={{backgroundImage: 'url('+ bgImage2 +')'}}></div>
+          <div>
+            <Row>
+              {/* <Card shoes={shoes[0]} i={1}/>
+              <Card shoes={shoes[1]} i={2}/>
+              <Card shoes={shoes[2]} i={3}/> */}
 
-      <Row className="card-list">
-        <ItemList/>
-        <ItemList/>
-        <ItemList/>
+              {
+                shoes.map((a, i)=>{
+                  return (
+                    <Card shoes={shoes[i]} i={i}/>
+                  )
+                })
+              }
 
-        <Col>
-          <Card className="text-center card-item">
-            <Card.Header>{items[1].title}</Card.Header>
-            <Card.Body>
-              <img src={bgImage} alt="" width="50%" />
-              <Card.Title>{items[1].content}</Card.Title>
-              <Card.Text>{items[1].price}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col>
-          <Card className="text-center card-item">
-            <Card.Header>{items[2].title}</Card.Header>
-            <Card.Body>
-              <img src={bgImage} alt="" width="50%" />
-              <Card.Title>{items[2].content}</Card.Title>
-              <Card.Text>{items[2].price}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-
-      <Button variant="primary" size="lg">
-        Block level button
-      </Button>
+              {/* <Col>
+                <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%" />
+                <h4>{shoes[1].title}</h4>
+                <p>{shoes[1].content}</p>
+                <p>{shoes[1].price}</p>
+              </Col>
+              <Col>
+                <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="80%" />
+                <h4>{shoes[2].title}</h4>
+                <p>{shoes[2].content}</p>
+                <p>{shoes[2].price}</p>
+              </Col> */}
+            </Row>
+          </div>
+        </div>}/>
+        <Route path='/detail' element={<div>상세 페이지</div>}/>
+      </Routes>
     </div>
   );
 }
 
-function ItemList(props) {
-  return(
+function Card(props){
+  return (
     <Col>
-      <Card className="text-center card-item">
-        <Card.Header>{props.title}</Card.Header>
-        <Card.Body>
-          <img src={bgImage} alt="" width="50%" />
-          <Card.Title>dfghsdg</Card.Title>
-          <Card.Text>sdhdsh</Card.Text>
-        </Card.Body>
-      </Card>
+      <img src={"https://codingapple1.github.io/shop/shoes" + (props.i+1) + ".jpg"} width="80%" />
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.content}</p>
+      <p>{props.shoes.price}</p>
     </Col>
   )
 }

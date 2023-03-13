@@ -11,14 +11,14 @@ import back from './react.png';
 import SubmitButton from './component/SubmitButton'
 import Modal from './component/Modal'
 import New from './0302state&map/New'
-
+import data from './shoppingMall/date';
 
 function App() {
-
+  let [shose] = useState(data);
 
   return (
     <div className="App">
-      <CommentList/>
+      {/* <CommentList/> */}
       {/* <SubmitButton/> */}
       {/* <New/> */}
     </div>
