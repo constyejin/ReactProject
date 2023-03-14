@@ -2,25 +2,18 @@
 
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from 'react';
-import State from './0302state&map/State'
-import Box from './component/Box';
-import Comment from './component/Comment'
-import CommentList from './component/CommentList';
-import back from './react.png';
-import SubmitButton from './component/SubmitButton'
-import Modal from './component/Modal'
-import New from './0302state&map/New'
-import data from './shoppingMall/date';
+import Header from './aTag3/components/Header/Header'
+import Main from './aTag3/components/Main/Main'
+import Card from './aTag3/components/Main/Cards'
+import Footer from './aTag3/components/Footer/Footer'
 
 function App() {
-  let [shose] = useState(data);
-
   return (
     <div className="App">
-      {/* <CommentList/> */}
-      {/* <SubmitButton/> */}
-      {/* <New/> */}
+      <Header/>
+      <Main/>
+      <Card/>
+      <Footer/>
     </div>
   );
 }

@@ -1,0 +1,29 @@
+footer {
+  background-color: #333;
+  padding: 20px 0;
+  margin-top: 120px;
+}
+
+.global-footer {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.global-footer h3 {
+  color: #fff;
+}
+
+.footer-list {
+  display: flex;
+}
+
+.footer-item {
+  margin-right: 20px;
+}
+
+
+.footer-item:last-child {
+  margin-right: 0;
+}

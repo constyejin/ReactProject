@@ -3,15 +3,24 @@ import { useState } from "react";
 import './New.css'
 
 function New() {
-  let list = "DW아카데미 503호";
   let [title, setTitle] = useState([
     "DW아카데미 501호",
     "DW아카데미 503호",
     "DW아카데미 201호",
   ]);
   let [name, setName] = useState(['이름1', '이름2', '이름3']) 
-  let [modal, setMoal] = useState(false);
-  let [modalTitle, setModalTitle] = useState(0);
+  let [modal, setModal] = useState(false);
+  let [modalTitle, setModalTitle] = useState(null);
+
+  const openModal = (i) => {
+    setModal(true);
+    setModalTitle(i);
+  }
+
+  const closeModal = () => {
+    setModal(false);
+    setModalTitle(null);
+  }
 
   return (
     <div>
@@ -23,7 +32,7 @@ function New() {
         title.map(function(a, i){
           return (
             <div className="list" key={i}>
-              <h4 onClick={()=>{setMoal(!modal); setModalTitle(i)}}>{a}</h4>
+              <h4 onClick={() => openModal(i)}>{a}</h4>
               <p>안녕하세요. 저는 {name[i]} 입니다.</p>
               <button onClick={()=>{
                 let copy = [...title];
@@ -35,13 +44,14 @@ function New() {
         })
       }
 
-
       {
-        // 조건문 대신 삼항연산자 사용
-        // 조건식 ? 참일때 실행 할 코드 : 거짓일때 실행 할 코드
-        // 1 == 1 ? 'ㅇㅇ' : 'ㄴㄴ'
-        // null은 텅빈 값
-        modal == true ? <Modal modalTitle={modalTitle} title={title}/> : null
+        modal && (
+          <Modal
+            title={title}
+            modalTitle={modalTitle}
+            closeModal={closeModal}
+          />
+        )
       }
 
     </div>
@@ -53,9 +63,9 @@ function Modal(props) {
     <div className="modal">
       <h4>{props.title[props.modalTitle]}</h4>
       <p>Lorem ipsum dolor sit.</p>
-      <button>글수정</button>
+      <button onClick={props.closeModal}>닫기</button>
     </div>
   )
 }
 
-export default New
+export default New;
