@@ -3,24 +3,17 @@ import { useState } from "react";
 import './New.css'
 
 function New() {
+  let list = "DW아카데미 503호";
+
   let [title, setTitle] = useState([
     "DW아카데미 501호",
     "DW아카데미 503호",
     "DW아카데미 201호",
   ]);
   let [name, setName] = useState(['이름1', '이름2', '이름3']) 
-  let [modal, setModal] = useState(false);
-  let [modalTitle, setModalTitle] = useState(null);
+  let [modal, setMoal] = useState(false);
+  let [modalTitle, setModalTitle] = useState(0);
 
-  const openModal = (i) => {
-    setModal(true);
-    setModalTitle(i);
-  }
-
-  const closeModal = () => {
-    setModal(false);
-    setModalTitle(null);
-  }
 
   return (
     <div>
@@ -32,7 +25,14 @@ function New() {
         title.map(function(a, i){
           return (
             <div className="list" key={i}>
-              <h4 onClick={() => openModal(i)}>{a}</h4>
+              <h4 onClick={()=>{
+                if (modal && modalTitle === i) {
+                  setMoal(false);
+                } else {
+                  setMoal(true);
+                  setModalTitle(i);
+                }
+              }}>{a}</h4>
               <p>안녕하세요. 저는 {name[i]} 입니다.</p>
               <button onClick={()=>{
                 let copy = [...title];
@@ -44,15 +44,7 @@ function New() {
         })
       }
 
-      {
-        modal && (
-          <Modal
-            title={title}
-            modalTitle={modalTitle}
-            closeModal={closeModal}
-          />
-        )
-      }
+      {modal && <Modal modalTitle={modalTitle} title={title} closeModal={() => setMoal(false)} />}
 
     </div>
   )

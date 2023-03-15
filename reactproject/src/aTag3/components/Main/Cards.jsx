@@ -9,11 +9,11 @@ const Cards = (props) => {
    ];
 
   return (
-    <section class="post-box">
+    <section className="post-box">
       {
-        posts.map((post) => {
+        posts.map((post, i) => {
           return (
-            <Card title={post.title} content={post.content} />
+            <Card title={post.title} content={post.content} key={i} />
           )
         })
       }
@@ -23,9 +23,9 @@ const Cards = (props) => {
 
 function Card(props) {
   return (
-    <div class="post-card">
+    <div className="post-card">
       <h2>{props.title}</h2>
-      <p class="post-card-txt">
+      <p className="post-card-txt">
         {props.content}
       </p>
     </div>
