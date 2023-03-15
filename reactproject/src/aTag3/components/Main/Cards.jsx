@@ -2,28 +2,31 @@ import React from 'react'
 import './Card.css'
 
 const Cards = (props) => {  
-  // const posts = [
-  //   { title: 'Post 1', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' },
-  //   { title: 'Post 2', content: 'Animi sint aperiam tempora ratione sunt beatae alias nulla.' },
-  //   { title: 'Post 3', content: 'Unde expedita suscipit quisquam natus dolores aliquam.' },
-  //  ];
+  const posts = [
+    { title: 'Title1', content: 'Lorem ipsum dolor sit amet.' },
+    { title: 'Title2', content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, laborum!' },
+    { title: 'Title3', content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, facilis deleniti reprehenderit consequatur ut a.' },
+   ];
 
   return (
     <section class="post-box">
-      <Card/>
-      <Card/>
-      <Card/>
+      {
+        posts.map((post) => {
+          return (
+            <Card title={post.title} content={post.content} />
+          )
+        })
+      }
     </section>
   )
 }
 
-function Card() {
+function Card(props) {
   return (
     <div class="post-card">
-      <h2>Lorem ipsum dolor sit.</h2>
+      <h2>{props.title}</h2>
       <p class="post-card-txt">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi sint aperiam tempora ratione sunt beatae alias nulla<br/>
-        unde expedita suscipit quisquam natus dolores aliquam, placeat ea iusto, nesciunt, incidunt minima.
+        {props.content}
       </p>
     </div>
   )

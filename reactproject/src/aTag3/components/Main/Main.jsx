@@ -24,6 +24,7 @@ function Ipsum(props) {
 
         {/* 컴포넌트가 렌더링될 때 마다 실행된다. 이벤트 핸들러에 함수로 전달해야 
         버튼이 클릭될 때만 alert가 실행된다 */}
+
         {/* 함수를 전달하면 이벤트가 발생했을 때만 함수가 실행된다. 
         이벤트 핸들러에 함수가 아닌 표현식이나 값이 직접 전달되면 컴포넌트가 
         렌더링될 때마다 해당 값이 실행된다. 
@@ -37,6 +38,8 @@ function Ipsum(props) {
         둘 다 true일 경우에만 true를 반환한다. 좌항이 false일 경우, 
         우항은 평가하지 않고 바로 false를 반환한다. */}
         {showBtn && <button className="front-btn" type="button" onClick={() => alert('안녕하세요!')}>버튼</button>}
+
+
       </div>
     </section>
   )
