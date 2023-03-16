@@ -26,13 +26,18 @@ function App() {
 
   return (
     <div className="App">
+      <About/>
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Yejin Shop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={()=>{navigate
-            ('/')}} className='nav-link'>Home</Nav.Link>
-            <Nav.Link onClick={()=>{navigate('./detail')}} className='nav-link'>Detail</Nav.Link>
+            ('/')}} className='nav-link'>
+            <Link to='/'>Home</Link>
+            </Nav.Link>
+            <Nav.Link className='nav-link'>
+              <Link to='/detail'>Detail</Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -88,21 +93,24 @@ function App() {
             }
           </div>
         }/> */}
-
+{/* 
         <Route path='/about' element={<About/>}>
           <Route path='member' element={<div>멤버</div>}/>
           <Route path='location' element={<div>위치정보다!</div>}/>
-        </Route>
+        </Route> */}
 
 
-        <Route path='/about/member' element={<About/>}/>
+        <Route path='/about' element={<div>어바웃 페이지</div>}></Route>
+
+
+        {/* <Route path='/about/member' element={<About/>}/>
         <Route path='/about/location' element={<About/>}/>
         <Route path='*' element={<h1>404 ERROR</h1>}/>
 
         <Route path='/event' element={<Event/>}>
           <Route path='/event/one' element={<p>첫 주문시 양배추즙 서비스</p>}/>
           <Route path='/event/two' element={<p>생일기념 쿠폰받기</p>}/>
-        </Route>
+        </Route> */}
       </Routes>
     </div>
   );
@@ -123,6 +131,9 @@ function About() {
   return (
     <div>
       <h3>회사 정보 어쩌구~ 저쩌구~</h3>
+      <li>
+        <Link to='/about'>fkfkfk</Link>
+      </li>
       <Outlet></Outlet>
     </div>
   )
