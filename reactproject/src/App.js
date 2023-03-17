@@ -25,18 +25,23 @@ function App() {
 
   return (
     <div className="App">
-      {console.log('render')}
+      {/* {console.log('render')}
       <h3>{count}</h3>
-      <button onClick={()=>{setCount(count + 1)}}>Click</button>
+      <button onClick={()=>{setCount(count + 1)}}>Click</button> */}
 
       {/* id 뒤에 있는 값은 파라미터기 때문에 값이 가변적이다.
           그래서 값이 있기만 하면 이 페이지를 보여준다  */}
-      {/* <Routes>
+      <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/Products' element={<Products/>}/>
         <Route path='/Products/:id' element={<ProductDetail/>}/>
-      </Routes> */}
+
+        {/* <Route path='/about' element={<About/>}>
+          <Route path='member' element={<h1>회원정보 페이지</h1>}/>
+          <Route path='location' element={<h1>위치정보 페이지</h1>}/>
+        </Route> */}
+      </Routes>
     </div>
   );
 }
