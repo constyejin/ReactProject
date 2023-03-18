@@ -24,6 +24,7 @@ function App() {
   // 내가 선택한 값으로 state값을 변경 해준다.
   const [userSelect, setUSerSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
+  const [result, setResult] = useState("");
 
     // userChoice로 값을 받아온다.
   const play = (userChoice)=>{
@@ -33,6 +34,33 @@ function App() {
     // computerChoice에 randomChoice()함수를 실행했을 때 결과값을 넣어준다.
     let computerChoice = randomChoice();
     setComputerSelect(computerChoice);
+
+    // 유저가 선택한 값과 컴퓨터가 선택한 값을 매개변수로 보내준다.
+    setResult(judgment(choice[userChoice], computerChoice))
+  }
+
+  const judgment =(user, computer)=>{
+    console.log(user, computer)
+
+    // 게임 로직에 대해서 생각해보자
+    // 어떻게 두 값을 비교 해야하는지 고민해보기
+    // user == computer : Tie
+    // user == "rock", computer == "scissors" : user WIN / computer LOSE
+    // user == "rock", computer == "paper" : user LOSE / conputer WIN
+    // user == "scissors", computer == "paper" : user WIN / conputer LOSE
+    // user == "scissors", computer == "rock" : user LOSE / conputer WIN
+    // user == "paper", computer == "rock" : user WIN / conputer LOSE
+    // user == "paper", computer == "scissors" : user LOSE / conputer WIN
+    if(user.name == computer.name) {
+      return "TIE"
+    } else if(user.name == "Rock") return computer.name == "Scissors" ? "WIN" : "LOSE"
+      // if(computer.name == "Scissors") {
+      //   return "WIN"
+      // } else {
+      //   return "LOSE"
+      // }
+      else if(user.name == "Scissors") return computer.name == "Paper" ? "WIN" : "LOSE"
+      else if(user.name == "Paper") return computer.name == "Rock" ? "WIN" : "LOSE"
   }
 
   const randomChoice=()=>{
@@ -60,8 +88,8 @@ function App() {
   return (
     <div className='App'>
       <div className="box-list">
-        <Box title="You" item={userSelect}/>
-        <Box title="Computer" item={computerSelect}/>
+        <Box title="You" item={userSelect} result={result}/>
+        <Box title="Computer" item={computerSelect} result={result}/>
       </div>
       <div className='btn-list'>
         {/* play라는 함수에게 매개변수로 값을 전달한다 */}

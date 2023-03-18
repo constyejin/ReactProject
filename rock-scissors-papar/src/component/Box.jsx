@@ -13,7 +13,7 @@ const Box = (props) => {
           null은 자동으로 false를 리턴하니까 우항 실행 X (렌더링X)
       */}
       <img src={props.item && props.item.img}/>
-      <h2>WIN</h2>
+      <h2>{props.result}</h2>
     </div>
   )
 }
