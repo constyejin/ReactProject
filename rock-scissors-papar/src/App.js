@@ -18,11 +18,12 @@ const choice = {
   },
 };
 
+
 function App() {
   // 처음에 사진이 없다가 클릭하면 뜨게 할거니까 초기값을 null로 준다.
   // 내가 선택한 값으로 state값을 변경 해준다.
   const [userSelect, setUSerSelect] = useState(null);
-  const [computerSelect, setComputerSelect] = useTransition(null);
+  const [computerSelect, setComputerSelect] = useState(null);
 
     // userChoice로 값을 받아온다.
   const play = (userChoice)=>{
@@ -58,7 +59,7 @@ function App() {
 
   return (
     <div className='App'>
-      <div className="main">
+      <div className="box-list">
         <Box title="You" item={userSelect}/>
         <Box title="Computer" item={computerSelect}/>
       </div>

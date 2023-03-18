@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.main {
+.box-list {
   display: flex;
   justify-content: center;
 }
