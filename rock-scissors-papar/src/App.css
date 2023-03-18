@@ -11,7 +11,7 @@
 }
 
 .box {
-  width: 400px;
+  width: 420px;
   padding: 30px;
   border: 5px solid #000;
 }
@@ -24,6 +24,22 @@
   width: 400px;
   height: 400px;
   object-fit: cover;
+  margin-top: 20px;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+button:last-child {
+    margin-right: 0;
 }
 
 .win {
