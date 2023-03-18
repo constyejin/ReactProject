@@ -1,8 +1,8 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 
 const ProductDetail = () => {
-  const params = useParams();
+  // const params = useParams();
   
   // Destructuring 
   // object를 리턴 값으로 받을 때 안에 있는 키 값을 멘션하면 그 키 값을 바로 사용가능

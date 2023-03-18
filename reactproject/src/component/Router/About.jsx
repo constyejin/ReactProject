@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
 
 const About = () => {
   const navigate = useNavigate('/')
@@ -15,8 +15,11 @@ const About = () => {
 
   return (
     <div>
-      <div>About Page!</div>
-      {/* <Outlet/> */}
+      <h1>About Page!</h1>
+      <Outlet/>
+      <button onClick={()=>{navigate('/about')}}>About</button>
+      <button onClick={()=>{navigate('/about/member')}}>member</button>
+      <button onClick={()=>{navigate('/about/location')}}>location</button>
       <button onClick={()=>{navigate('/')}}>Home으로 이동</button>
       {/* <button onClick={goToHomepage}>Home으로 이동</button> */}
     </div>
