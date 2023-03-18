@@ -4,7 +4,7 @@ import './App.css';
 import Box from './component/Box'
 
 function App() {
-  // 처음에 어떤 값이 들어갈지 모르니까 일단 null
+  // 처음에 사진이 없다가 클릭하면 뜨게 할거니까 초기값을 null로 준다.
   // 내가 선택한 값으로 state값을 변경 해준다.
   const [userSelect, setUSerSelect] = useState(null)
 
