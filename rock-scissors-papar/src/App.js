@@ -52,15 +52,15 @@ function App() {
     // user == "paper", computer == "rock" : user WIN / conputer LOSE
     // user == "paper", computer == "scissors" : user LOSE / conputer WIN
     if(user.name == computer.name) {
-      return "TIE"
-    } else if(user.name == "Rock") return computer.name == "Scissors" ? "WIN" : "LOSE"
+      return "tie"
+    } else if(user.name == "Rock") return computer.name == "Scissors" ? "win" : "lose"
       // if(computer.name == "Scissors") {
       //   return "WIN"
       // } else {
       //   return "LOSE"
       // }
-      else if(user.name == "Scissors") return computer.name == "Paper" ? "WIN" : "LOSE"
-      else if(user.name == "Paper") return computer.name == "Rock" ? "WIN" : "LOSE"
+      else if(user.name == "Scissors") return computer.name == "Paper" ? "win" : "lose"
+      else if(user.name == "Paper") return computer.name == "Rock" ? "win" : "lose"
   }
 
   const randomChoice=()=>{

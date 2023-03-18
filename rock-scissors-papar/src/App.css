@@ -13,7 +13,7 @@
 .box {
   width: 400px;
   padding: 30px;
-  border: 1px solid #000;
+  border: 5px solid #000;
 }
 
 .box:first-child {
@@ -26,4 +26,14 @@
   object-fit: cover;
 }
 
+.win {
+  border: 5px solid green;
+}
 
+.lose {
+  border: 5px solid red;
+}
+
+.tie {
+  border: 5px solid #000;
+}
