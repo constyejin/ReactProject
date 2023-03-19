@@ -3,6 +3,8 @@ import {useState, useTransition} from 'react'
 import './App.css';
 import Box from './component/Box'
 
+// 객체는 key : value 형태로 작성하고, value로 여러개의 프로퍼티를 가질 수 있다.
+// 프로퍼티 : key : value 쌍
 const choice = {
   scissors : {
   name : "Scissors",
@@ -26,7 +28,7 @@ function App() {
   const [computerSelect, setComputerSelect] = useState(null);
   const [result, setResult] = useState("");
 
-    // userChoice로 값을 받아온다.
+  // userChoice로 값을 받아온다.
   const play = (userChoice)=>{
     console.log(userChoice, "가 선택됨!")
     setUSerSelect(choice[userChoice]);
