@@ -21,13 +21,19 @@ import React from 'react'
 
 const Box = (props) => {
   let result;
+
   if (
+    // title이 "Computer"고, result가 "tie"나 ""(빈 문자열)이 아닌 경우, 
+    // result 값이 "win"이면 "lose"로, "lose"면 "win"으로 변경한 값을 result 변수에 할당한다. 
+    // 이렇게 되면 result가 사용자가 이긴 경우 "Computer"는 "lose"로, 사용자가 진 경우 "win"으로 설정된다.
     props.title === "Computer" &&
     props.result !== "tie" &&
     props.result !== ""
-  ) { // 카드가 computer카드인가? && 결과가 비긴건 아닌가? && props.result에 값이 있는가?
+  ) { 
+    // 카드가 computer카드인가? && 결과가 비긴건 아닌가? && props.result에 값이 있는가?
     result = props.result === "win" ? "lose" : "win";
-  } else {// 위의 경우가 아니라면 props 로 전달된 결과를 그대로 쓴다.
+  } else {
+    // 위의 경우가 아니라면 props 로 전달된 결과를 그대로 쓴다.
     result = props.result;
   }
   if (props.title === "Computer") {

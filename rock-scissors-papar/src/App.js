@@ -31,6 +31,7 @@ function App() {
   // userChoice로 값을 받아온다.
   const play = (userChoice)=>{
     console.log(userChoice, "가 선택됨!")
+    // choice에서 userChoice 값을 들고온다
     setUSerSelect(choice[userChoice]);
 
     // computerChoice에 randomChoice()함수를 실행했을 때 결과값을 넣어준다.
@@ -53,6 +54,7 @@ function App() {
     // user == "scissors", computer == "rock" : user LOSE / conputer WIN
     // user == "paper", computer == "rock" : user WIN / conputer LOSE
     // user == "paper", computer == "scissors" : user LOSE / conputer WIN
+
     if(user.name == computer.name) {
       return "tie"
     } else if(user.name == "Rock") return computer.name == "Scissors" ? "win" : "lose"
@@ -96,8 +98,8 @@ function App() {
       <div className='btn-list'>
         {/* play라는 함수에게 매개변수로 값을 전달한다 */}
         {/* play() 함수 호출 / react에서는 UI를 그려줄 때 이 함수를 실행시켜 버린다 
-            콜백함수 형태로 함수를 전달 해줘야 한다. 
-            함수를 호출하는 형태로 넣어주는 게 아니라 콜백함수 형태로 전달 해줘야 한다.
+        콜백함수 형태로 함수 안에다가 전달 해줘야 한다. 
+        함수를 호출하는 형태로 넣어주는 게 아니라 콜백함수 형태로 전달 해줘야 한다.
         */}
         <button onClick={()=> play("scissors")}>가위</button>
         <button onClick={()=> play("rock")}>바위</button>
