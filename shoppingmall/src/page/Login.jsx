@@ -1,8 +1,12 @@
 import React from 'react'
 import { Container, Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 
-const Login = () => {
+const Login = ({setUserLogin}) => {
+  // 로그인시 다시 전체페이지로 돌아가기 위한 코드
+  const navigate = useNavigate() 
+
   const loginUser = (event) => {
     // 콘솔이 잠깐 찍혔다가 빠르게 사라지는 이유 
     // : 페이지를 새로고침 하기 때문에 그렇다.
@@ -13,6 +17,9 @@ const Login = () => {
     // preventDefault()를 사용하자!
     console.log("로그인 유저 함수")
     event.preventDefault();
+
+    setUserLogin(true);
+    navigate('/')
   }
 
   return (

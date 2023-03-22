@@ -31,8 +31,8 @@ import { Container, Row, Col } from 'react-bootstrap';
           {
             productList.map((menu, i) => {
               return (
-                <Col lg={4}>
-                  <ProductCard item={menu} key={i}/>
+                <Col lg={4} key={i}>
+                  <ProductCard item={menu}/>
                 </Col>
               )
             })

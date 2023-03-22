@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import {Routes, Route} from 'react-router-dom';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import './App.css';
 import ProductAll from './page/ProductAll';
 import ProductDetail from './page/ProductDetail';
 import Login from './page/Login';
 import Nav from './component/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PrivateRoute from './route/PrivateRoute';
 
 // 1. 전체상품, 로그인, 상품상세
 // 2. 전체상품 페이지에서는 전체 상품을 볼 수 있다.
@@ -20,16 +21,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   // true면 로그인이 된거고, false면 로그인이 안 된거임.
   // 로그인 버튼을 클릭했을 때 값이 true가 되어야 한다.
-  const [userLogin, setUserLogin] = useState(false)
+  const [userLogin, setUserLogin] = useState(false);
+
+  useEffect(() => {
+    console.log("Login", userLogin)
+  }, [userLogin])
 
   return (
     <div className="App">
       <Nav/>
       <Routes>
         <Route path="/" element={<ProductAll/>}></Route>
-        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/login" element={<Login setUserLogin={setUserLogin}/>}></Route>
         {/* React Restful Route 규칙을 따라서 작성 */}
-        <Route path="/product/:id" element={<ProductDetail/>}></Route>
+        {/* 
+          ProductDetail 컴포넌트를 보여주는 게 아니라
+          PrivateRoute를 보여주고 거기서 조건을 걸어준다.
+          userLogin 정보를 Props로 전달한다!
+        */}
+        <Route path="/product/:id" element={<PrivateRoute userLogin={userLogin}/>}></Route>
       </Routes>
     </div>
   );
