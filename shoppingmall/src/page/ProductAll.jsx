@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import ProductCard from '../component/ProductCard';
-
+import { Container, Row, Col } from 'react-bootstrap';
 
   const ProductAll = () => {  
     // state를 만든 후 우선 비어있는 Array 할당
@@ -26,7 +26,19 @@ import ProductCard from '../component/ProductCard';
 
   return (
     <div>
-      <ProductCard/>
+      <Container>
+        <Row>
+          {
+            productList.map((menu, i) => {
+              return (
+                <Col lg={4}>
+                  <ProductCard item={menu} key={i}/>
+                </Col>
+              )
+            })
+          }
+        </Row>
+      </Container>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import ProductAll from './page/ProductAll';
 import ProductDetail from './page/ProductDetail';
 import Login from './page/Login';
 import Nav from './component/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // 1. 전체상품, 로그인, 상품상세
 // 2. 전체상품에서는 전체 상품을 볼 수 있다.

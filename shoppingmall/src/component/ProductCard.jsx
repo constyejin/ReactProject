@@ -1,13 +1,18 @@
 import React from 'react'
 
-const ProductCard = () => {
+// 상품정보 객체를 props {item}로 받아온다.
+const ProductCard = ({item}) => {
   return (
     <div>
-      <img src="https://static.nike.com/a/images/t_PDP_864_v1,f_auto,q_auto:eco/ff277d04-1977-4caa-be23-3cea973d2575/%EB%8D%A9%ED%81%AC-%EB%A1%9C%EC%9A%B0-%EC%97%AC%EC%84%B1-%EC%8B%A0%EB%B0%9C-ZuZyA5Sj.png" alt="" />
-      <div>md선택상품</div>
-      <div>제품명</div>
-      <div>가격</div>
-      <div>신제품</div>
+      {/* 아이템이 있는지 먼저 확인한다 */}
+      <img width={400} src={item?.img}/>
+      <div className='card-content-list'>
+        <div className='choice-item'>{item?.choice == true ? "베스트셀러" : ""}</div>
+        <div>{item?.title}</div>
+        <div>{item?.price}</div>
+        {/* 아이템이 있는지 확인하고, new가 true라면 신제품이라고 표시하고 아니라면 빈 문자열 */}
+        <div>{item?.new == true ? "신제품" : ""}</div>
+      </div>
     </div>
   )
 }
