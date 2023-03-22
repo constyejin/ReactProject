@@ -23,6 +23,10 @@ li {
   margin-bottom: 0;
 }
 
+.login-list li {
+  cursor: pointer;
+}
+
 .login-list li::after {
   content: '|';
   margin-right: 8px;
@@ -53,6 +57,10 @@ li {
   font-weight: 500;
 }
 
+.gnb-list li {
+  cursor: pointer;
+}
+
 .icon-list {
   display: flex;
   align-items: center;
@@ -81,10 +89,19 @@ li {
 
 .icon {
   font-size: 22px;
+  cursor: pointer;
 }
 
 .icon:first-child {
   margin-right: 22px;
+}
+
+.product-card-list {
+  margin-top: 50px;
+}
+
+.product-card-list img {
+  width: 100%;
 }
 
 .card-content-list {
@@ -94,4 +111,17 @@ li {
 
 .choice-item {
   color: brown;
+}
+
+.new-item {
+  font-size: 14px;
+  color: gray;
+}
+
+.price-item {
+  margin-top: 12px;
+}
+
+.login-wrapper {
+  width: 680px;
 }
