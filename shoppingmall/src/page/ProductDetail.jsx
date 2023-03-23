@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom'
 import { Container,Row, Col } from 'react-bootstrap'
 
 const ProductDetail = () => {
+  // url 파라미터 값을 읽을 수 있는 훅 => useParams
   let {id} = useParams();
   const [product, setProduct] = useState(null)
 
   const getProcutDetail = async () => {
     // API 호출
     // product 뒤에 id값은 내가 클릭한대로 변경되어야 하니까 동적인 값
-    // url 파라미터 값을 읽을 수 있는 훅 => useParams
+    
     let url = `http://localhost:5000/products/${id}`
     let response = await fetch(url)
     let data = await response.json()
@@ -33,7 +34,7 @@ const ProductDetail = () => {
         <Col>
           <h2>{product?.title}</h2>
           <div>{product?.price}</div>
-          <div>{product?.size}</div>
+          <div>사이즈 : {product?.size}</div>
         </Col>
       </Row>
     </Container>
