@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../page/Login'
-import ProductDetail from '../page/ProductAll'
+import ProductDetail from '../page/ProductDetail'
 import { Navigate } from 'react-router-dom'
 
 // 조건부 렌더링 
@@ -9,7 +9,7 @@ import { Navigate } from 'react-router-dom'
 
 // 삼항연산자로 userLogin === true ? 
 // 
-const PrivateRoute = (userLogin) => {
+const PrivateRoute = ({userLogin}) => {
   return userLogin === true ? <ProductDetail/> : <Navigate to='/login'/>
 }
 

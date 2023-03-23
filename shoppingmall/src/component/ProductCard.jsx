@@ -1,9 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // 상품정보 객체를 props {item}로 받아온다.
 const ProductCard = ({item}) => {
+
+  const navigate = useNavigate()
+  
+  const showDetail = () => {
+    navigate(`/product/${item.id}`)
+  }
+
   return (
-    <div className='product-card-list'>
+    <div className='product-card-list' onClick={showDetail}>
       {/* 아이템이 있는지 먼저 확인한다 */}
       <img src={item?.img}/>
       <div className='card-content-list'>

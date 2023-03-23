@@ -34,6 +34,7 @@ const Login = ({setUserLogin}) => {
         </div>
         <input style={{width: "100%", margin : "30px 0", padding : "12px", borderRadius : "5px", outline : "none", border : "1px solid #000"}} type="text" placeholder='이메일'/>
         <p style={{width : "380px", color : "gray"}}>계속 진행하면 나이키의 <span style={{textDecoration : "underline"}}>개인 정보 처리 방침</span> 및 <span style={{textDecoration : "underline"}}>이용약관</span>에 동의하게 됩니다.</p>
+        
         <div style={{display : "flex", justifyContent : "flex-end"}}>
           <button type='submit' style={{width : "80px", backgroundColor : "#000", color : "#fff", borderRadius : "40px", padding : "10px"}}>계속</button>
         </div>
