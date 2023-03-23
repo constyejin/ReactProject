@@ -14,6 +14,10 @@ const Nav = () => {
     navigate("/login")
   }
 
+  const search = () => {
+    console.log("Key Press")
+  }
+
   return (
     <div>
       <div className='login'>
@@ -42,7 +46,7 @@ const Nav = () => {
         <div className='icon-list'>
           <div className='search-box'>
             <FontAwesomeIcon className='ic-search' icon={faMagnifyingGlass} />
-            <input type="text" placeholder='검색'/>
+            <input type="text" placeholder='검색' onKeyPress={search}/>
           </div>
           <div>
             <FontAwesomeIcon className='icon' icon={faHeart} />
