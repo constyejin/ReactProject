@@ -12,7 +12,7 @@ const ProductDetail = () => {
     // API 호출
     // product 뒤에 id값은 내가 클릭한대로 변경되어야 하니까 동적인 값
     
-    let url = `http://localhost:5000/products/${id}`
+    let url = `https://my-json-server.typicode.com/iingkejin/ReactBasic/shoppingmall/products/${id}`
     let response = await fetch(url)
     let data = await response.json()
     console.log(data)

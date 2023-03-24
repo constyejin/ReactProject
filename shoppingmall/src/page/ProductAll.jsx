@@ -17,7 +17,7 @@ import { Container, Row, Col } from 'react-bootstrap';
       console.log("쿼리값", searchQuery)
 
       // 모든 데이터를 가진 주소를 불러준다.
-      let url = `http://localhost:5000/products?q=${searchQuery}`
+      let url = `https://my-json-server.typicode.com/iingkejin/ReactBasic/shoppingmall/products?q=${searchQuery}`
       // url을 fetch 해줘라
       let response = await fetch(url);
       // response에서 json을 뽑아와라
