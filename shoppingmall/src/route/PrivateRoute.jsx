@@ -10,7 +10,7 @@ import { Navigate } from 'react-router-dom'
 // 삼항연산자로 userLogin === true ? 
 // 
 const PrivateRoute = ({userLogin}) => {
-  return userLogin === true ? <ProductDetail/> : <Navigate to='/login'/>
+  return userLogin === true ? <ProductDetail/> : <Login/>
 }
 
 export default PrivateRoute

@@ -14,8 +14,26 @@ const Nav = () => {
     navigate("/login")
   }
 
-  const search = () => {
-    console.log("Key Press")
+  // 이 event에 있는 키가 "Enter" 라면
+  const search = (event) => {
+    // console.log("Key Press")
+
+    if(event.key === "Enter") {
+      // 입력한 검색어를 읽어와서 url을 바꿔준다.
+      console.log("Enter!!!");
+
+      // react에서 input안에 있는 값을 읽어오는 방법
+      let keyword = event.target.value;
+      console.log(keyword);
+
+      // url을 바꿔준다 => navigate 사용
+      // 파라미터 값이 아니라 쿼리 값이 필요!
+      // 추가적인 조건에 대해서는 쿼리로 붙인다
+      // ?q=검색어
+      navigate(`/?q=${keyword}`)
+
+      // 이제 api에서 이 키워드를 가진게 있다면 화면에 보여준다.
+    }
   }
 
   return (
@@ -46,7 +64,7 @@ const Nav = () => {
         <div className='icon-list'>
           <div className='search-box'>
             <FontAwesomeIcon className='ic-search' icon={faMagnifyingGlass} />
-            <input type="text" placeholder='검색' onKeyPress={search}/>
+            <input type="text" placeholder='검색' onKeyPress={(event) => search(event)}/>
           </div>
           <div>
             <FontAwesomeIcon className='icon' icon={faHeart} />
