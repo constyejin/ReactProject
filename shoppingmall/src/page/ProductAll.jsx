@@ -1,55 +1,61 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom';
-import ProductCard from '../component/ProductCard';
-import { Container, Row, Col } from 'react-bootstrap';
+import {useEffect, useState} from 'react'
+import ProductCard from '../component/ProductCard'
+import { Container, Row, Col } from 'react-bootstrap'
 
+const ProductAll = () => {
+  const [productList, setProductList]  = useState([]);
+  // async await http 요청
+  // 비동기처리 하는 가장 최근에 나온 문법
+  // 기존에는 비동기 처리를 해주는게 콜백함수
+  // 콜백함수로 사용할 경우, 
+  // 콜백함수 안에 또 콜백함수가 들어갈 경우 계속 중첩된다.
+  // 가독성도 떨어지고 로직 변경이 힘들다. => 콜백 지옥
 
-  const ProductAll = () => {  
-    // state를 만든 후 우선 비어있는 Array 할당
-    const [productList, setProductList] = useState([])
-    
-    const [query, setQuery] = useSearchParams();
+  // 비동기 처리 
+  // 특정 코드의 실행이 완료될 때 까지 기다리지 않고
+  // 다음 코드를 먼저 실행한다.
 
-    const getProducts= async () => {
-      // q라고 시작되는 아이템을 가져다가 searchQuery 넣어준다. 쿼리 값이 없을 때는 빈 스트링을 넣어준다.
-      let searchQuery = query.get('q') || "";
-      console.log("쿼리값", searchQuery)
+  // 1. 함수 앞에 async 예약어를 써준다.
+  // 2. 함수 내부 로직 중 HTTP 통신을 하는 비동기 처리 코드 앞에 await
+  // 3. await 함수 내에서 사용하려면, 
+  // 반드시 함수 앞에 async 키워드가 있어야 한다.
 
-      // 모든 데이터를 가진 주소를 불러준다.
-      let url = `https://my-json-server.typicode.com/iingkejin/ReactBasic/shoppingmall/products?q=${searchQuery}`
-      // url을 fetch 해줘라
-      let response = await fetch(url);
-      // response에서 json을 뽑아와라
-      let data = await response.json();
-      console.log(data);
-      
-      // state 변경 함수를 호출해서 data를 넣어준다.
-      setProductList(data)
-    };
- 
-    // useEffect 배열에 값이 없으면 프로젝트 렌더 후 딱 한번만 호출된다.
-    // query 값이 바뀔 때 마다 재호출 해달라고 요청한다.
-    useEffect(()=>{
-      getProducts()
-    }, [query]);
+  // await
+  //  함수를 호출하고 본문이 실행될 때 잠시 중단 됐다가
+  //  프라미스가 처리되면 실행이 재개된다.
+  //  프라미스 : 자바스크립트 비동기 처리에 사용되는 객체
+  const getProducts = async () => {
+    // 모든 데이터를 가진 주소를 부른다.
+    let url = "http://localhost:5000/products"
+    // url fetch 해줘라
+    let response = await fetch(url);
+    // response에서 json을 뽑아와라
+    let data = await response.json();
+    console.log(data)
+
+    // State 변경 함수에 date값 할당
+    setProductList(data)
+  }
+
+  useEffect(() => {
+    getProducts()
+  }, []);
 
   return (
-    <div>
-      <Container>
-        <Row>
-          {
-            productList.map((menu, i) => {
-              return (
-                <Col lg={4} md={10} key={i}>
-                  <ProductCard item={menu}/>
-                </Col>
-              )
-            })
-          }
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        {
+          productList.map((menu, i) => {
+            return (
+              <Col lg={4} md={10} xs={12}>
+                <ProductCard menu={menu}/>
+              </Col>
+            )
+          })
+        }
+      </Row>
+    </Container>
   )
 }
 

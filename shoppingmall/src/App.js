@@ -1,29 +1,33 @@
 import logo from './logo.svg';
-import {Routes, Route} from 'react-router-dom';
-import {useEffect, useState} from 'react'
 import './App.css';
-import ProductAll from './page/ProductAll';
-import ProductDetail from './page/ProductDetail';
-import Login from './page/Login';
-import Nav from './component/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Routes, Route} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import ProductAll from './page/ProductAll';
+import ProductDetail from './page/ProductDetail'
+import Login from './page/Login'
+import Nav from './component/Nav'
 import PrivateRoute from './route/PrivateRoute';
 
-// 1. 전체상품, 로그인, 상품상세
-// 2. 전체상품 페이지에서는 전체 상품을 볼 수 있다.
-// 3. 로그인 버튼을 누르면 로그인 페이지가 나온다.
-// 4. 로그인 전에 상품 디테일 페이지를 클릭할 경우, 로그인 페이지를 먼저 보여준다.
-// 5. 로그인이 되어 있다면, 상품 디테일 페이지를 보여준다.
-// 6. 로그아웃 버튼을 클릭하면 로그아웃이 된다.
-// 7. 로그아웃 되면 상품 디테일 페이지를 볼 수 없다.
-// 8. 로그인하면 로그아웃 버튼이 보이고, 로그아웃 하면 로그인 버튼이 보인다.
+// 1. 전체상품(ProductAll), 로그인, 상세페이지(ProductDetail)
+// 2. 로그인 전에 상세페이지 접속시, 로그인 페이지를 먼저 보여준다.
+// 3. 로그인이 이미 되어있다면, 상세페이지 보여준다.
+
+// 4. 로그인 하면 로그아웃 버튼이 보이고, 로그아웃 하면 로그인 버튼이 보인다.
+
 
 function App() {
-  // true면 로그인이 된거고, false면 로그인이 안 된거임.
-  // 로그인 버튼을 클릭했을 때 값이 true가 되어야 한다.
-  const [userLogin, setUserLogin] = useState(false);
+  // true면 로그인 된 상태, false면 로그인이 안 된 상태
+  // 사이트 접속 했을 때 처음 로그인된 상태면 안되니까 기본값이 false
+  // 로그인 버튼을 클릭 했을 때 값을 true로 바꿔준다.
 
-  useEffect(() => {
+  // 로그인 상태를 변경하려면 state변경 함수인 setUserLogin를 이용
+  // Login component에서 이 함수를 이용하려면 어떻게 해야할까? => Props
+  // 함수도 Props 전송이 가능하다
+  const [userLogin, setUserLogin] = useState(false)
+
+  // userLogin 값이 변경될 때 마다 console.log
+  useEffect(()=>{
     console.log("Login", userLogin)
   }, [userLogin])
 
@@ -31,15 +35,9 @@ function App() {
     <div className="App">
       <Nav/>
       <Routes>
-        <Route path="/" element={<ProductAll/>}></Route>
-        <Route path="/login" element={<Login setUserLogin={setUserLogin}/>}></Route>
-        {/* React Restful Route 규칙을 따라서 작성 */}
-        {/* 
-          ProductDetail 컴포넌트를 보여주는 게 아니라
-          PrivateRoute를 보여주고 거기서 조건을 걸어준다.
-          userLogin 정보를 Props로 전달한다!
-        */}
-        <Route path="/product/:id" element={<PrivateRoute userLogin={userLogin}/>}></Route>
+        <Route path='/' element={<ProductAll/>}/>
+        <Route path='/login' element={<Login setUserLogin={setUserLogin}/>}/>
+        <Route path='/product/:id' element={<PrivateRoute userLogin={userLogin}/>}/>
       </Routes>
     </div>
   );
