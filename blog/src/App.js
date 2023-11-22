@@ -1,8 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
   let post = '배고픈데';
+  // title : state에 보관했던 자료
+  // setTitle : state 변경 도와주는 함수
+  // 변동시 자동으로 html에 반영되게 만들고 싶다면 state사용
+  let [title, setTitle] = useState(['리액트', '파이썬', '자바스크립트']);
 
   // JSX 문법
   // 1. class 넣을 때 => className
@@ -11,9 +16,23 @@ function App() {
   return (
     <div className="App">
       <div className='nav'>
-        <h4 style={{fontSize : '24px'}}>BLOG</h4>
+        <h4 style={{fontSize : '24px'}}>ReactBlog</h4>
       </div>
-      <h4 style={{color : 'red'}}>{post}</h4>
+      
+      <div className="list">
+        <h4>{title[0]}</h4>
+        <p>23.11.22</p>
+      </div>
+
+      <div className="list">
+        <h4>{title[1]}</h4>
+        <p>23.11.22</p>
+      </div>
+
+      <div className="list">
+        <h4>{title[2]}</h4>
+        <p>23.11.22</p>
+      </div>
     </div>
   );
 }
