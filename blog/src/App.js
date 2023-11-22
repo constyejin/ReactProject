@@ -11,11 +11,16 @@ function App() {
   // setTitle : state 변경 도와주는 함수
   // 변동시 자동으로 html에 반영되게 만들고 싶다면 state사용
   let [title, setTitle] = useState(['리액트', '파이썬', '자바스크립트']);
+  let [like, setLike] = useState(0);
 
   // JSX 문법
   // 1. class 넣을 때 => className
   // 2. 데이터 바인딩 => {변수명}
   // 3. style => style={{이름 : '값'}}
+
+  function likeBtn(){
+    console.log(1);
+  }
   return (
     <div className="App">
       <div className='nav'>
@@ -23,17 +28,23 @@ function App() {
       </div>
       
       <div className="list">
-        <h4>{title[0]}</h4>
+        <h4>{title[0]} 
+          <span onClick={() => {setLike(like + 1)}}>👍🏻</span> {like}
+        </h4>
         <p>23.11.22</p>
       </div>
 
       <div className="list">
-        <h4>{title[1]}</h4>
+        <h4>{title[1]}
+          <span>👍🏻</span> 
+        </h4>
         <p>23.11.22</p>
       </div>
 
       <div className="list">
-        <h4>{title[2]}</h4>
+        <h4>{title[2]}
+          <span>👍🏻</span> 
+        </h4>
         <p>23.11.22</p>
       </div>
     </div>
