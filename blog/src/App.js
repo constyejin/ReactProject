@@ -34,7 +34,13 @@ function App() {
           </h4>
           <p>23.11.22</p>
         </div>
-        <button className='title-btn' onClick={() => {setTitle(['유니티', '파이썬', '자바스크립트'])}}>글제목 변경</button>
+        <button className='title-btn' onClick={() => {
+          // array, object => reference data type
+          // state가 array / object면 shallow copy를 만들어서 수정해야 한다.
+          let newTitle = [...title];
+          newTitle[0] = '자바';
+          setTitle(newTitle);
+          }}>글제목 변경</button>
       </div>
 
       <div className="list">
