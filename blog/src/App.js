@@ -10,7 +10,7 @@ function App() {
   // title : state에 보관했던 자료
   // setTitle : state 변경 도와주는 함수
   // 변동시 자동으로 html에 반영되게 만들고 싶다면 state사용
-  let [title, setTitle] = useState(['리액트', '파이썬', '자바스크립트']);
+  let [title, setTitle] = useState(['파이썬', '리액트', '자바스크립트']);
   let [like, setLike] = useState(0);
 
   // JSX 문법
@@ -56,6 +56,11 @@ function App() {
         </h4>
         <p>23.11.22</p>
       </div>
+      <button onClick={() => {
+        let titleSort = [...title].sort();
+        // console.log(titleSort)
+        setTitle(titleSort);
+      }}>가나다순 정렬</button>
     </div>
   );
 }
