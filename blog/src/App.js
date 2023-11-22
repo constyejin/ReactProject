@@ -56,14 +56,40 @@ function App() {
         </h4>
         <p>23.11.22</p>
       </div>
-      <button onClick={() => {
+      <button className='sort-btn' onClick={() => {
         let titleSort = [...title];
         titleSort.sort();
         // console.log(titleSort)
         setTitle(titleSort);
       }}>가나다순 정렬</button>
+      <Modal/> 
     </div>
   );
 }
+
+  // 컴포넌트 생성법
+  // 1. function 만들기
+  // 2. return() 안에 html 담기
+  // 3. <함수명></함수명> 
+  // return() 안에 html 병렬 기입하려면 <></> 또는 <div>로 한 번 더 묶기
+
+  // 컴포넌트로 만들면 좋은 것
+  // 1. 반복적인 html 축약할 때
+  // 2. 큰 페이지
+  // 3. 자주 변경되는 html UI (성능상)
+
+  // 컴포넌트 단점
+  // 1. state 가져다 쓸 때 다른 함수에 있는 변수 가져다 쓸 수 없다.
+
+  // const Modal = () => {return()} 
+  function Modal(){
+    return(
+      <div className="modal">
+        <h4>Title</h4>
+        <p>Date</p>
+        <p>Content</p>
+      </div>
+    )
+  }
 
 export default App;
