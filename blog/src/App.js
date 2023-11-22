@@ -1,3 +1,6 @@
+// warning 알려주는 Lint 기능 끄기
+/* eslint-disable */
+
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
