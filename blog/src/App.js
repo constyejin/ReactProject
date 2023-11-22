@@ -28,10 +28,13 @@ function App() {
       </div>
       
       <div className="list">
-        <h4>{title[0]} 
-          <span onClick={() => {setLike(like + 1)}}>👍🏻</span> {like}
-        </h4>
-        <p>23.11.22</p>
+        <div className='list-box'>
+          <h4>{title[0]}
+            <span onClick={() => {setLike(like + 1)}}>👍🏻</span> {like}
+          </h4>
+          <p>23.11.22</p>
+        </div>
+        <button className='title-btn' onClick={() => {setTitle(['유니티', '파이썬', '자바스크립트'])}}>글제목 변경</button>
       </div>
 
       <div className="list">
