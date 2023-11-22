@@ -1,5 +1,14 @@
+div {
+  box-sizing: border-box;
+}
+
 .nav {
   color: #fff;
   background-color: #000;
-  padding: 8px 40px;
+  padding: 8px 30px;
+}
+
+.list {
+  padding-left: 30px;  
+  border-bottom: 1px solid gray;
 }
