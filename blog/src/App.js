@@ -57,7 +57,8 @@ function App() {
         <p>23.11.22</p>
       </div>
       <button onClick={() => {
-        let titleSort = [...title].sort();
+        let titleSort = [...title];
+        titleSort.sort();
         // console.log(titleSort)
         setTitle(titleSort);
       }}>가나다순 정렬</button>
