@@ -24,3 +24,14 @@ button {
   padding: 0 30px;  
   border-bottom: 1px solid gray;
 }
+
+.sort-btn {
+  margin: 20px;
+}
+
+.modal {
+  margin: 20px;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 8px;
+}
