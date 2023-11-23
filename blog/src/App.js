@@ -13,6 +13,7 @@ function App() {
   let [title, setTitle] = useState(['파이썬', '리액트', '자바스크립트']);
   let [like, setLike] = useState(0);
   let [modal, setModal] = useState(false);
+  let clickCount = 0;
 
   // JSX 문법
   // 1. class 넣을 때 => className
@@ -63,7 +64,17 @@ function App() {
         // console.log(titleSort)
         setTitle(titleSort);
       }}>가나다순 정렬</button>
-      <button onClick={() => {setModal(true)}}>모달창 열기</button>
+      <button onClick={() => {
+        // Javascript에선 버튼 누르면 모달창 html 직접 건드린다.
+        // React에선 버튼 누르면 모달창 스위치(State)만 건드린다.
+        clickCount+=1;
+        if(clickCount % 2 == 0) {
+          setModal(false);
+        } else {
+          setModal(true);
+        }
+        console.log(clickCount);
+      }}>모달창</button>
 
       {
         // 조건문을 중괄호 안에 사용하고 싶을 때 => 삼항 연산자(ternary operator)
