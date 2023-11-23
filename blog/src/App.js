@@ -15,6 +15,7 @@ function App() {
   let [modal, setModal] = useState(false);
   // State가 여러 곳에서 필요하다면 가장 상위 component인 App에 생성
   let [modalTitle, setmodalTitle] = useState(0);
+  let [clicked, setClicked] = useState(0);
 
   // JSX 문법
   // 1. class 넣을 때 => className
@@ -34,8 +35,15 @@ function App() {
           return (
             <div className="list" key={i}>
               <div className='list-box'>
-                <h4 onClick={() => {
-                  modal == true ? setModal(false) : setModal(true);  
+                <h4 className='title' onClick={(e) => {
+                  // let currentClicked = e.target;
+                  // clicked == currentClicked ? setModal(false) : setModal(true);
+                  setClicked(clicked + 1);
+                  if(clicked % 2 == 0) {
+                    setModal(true);
+                  } else {
+                    setModal(false);
+                  }
                   setmodalTitle(i);
                 }}>{a}
                   <span onClick={() => {
