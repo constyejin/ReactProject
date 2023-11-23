@@ -69,7 +69,10 @@ function App() {
 
       {
         // 조건문을 중괄호 안에 사용하고 싶을 때 => 삼항 연산자(ternary operator)
-        modal == true ? <Modal/> : null
+        // 부모 -> 자식 state 전송하는 방법
+        // 1. <자식컴포넌트 작명={state이름}
+        // 2. 자식 컴포넌트에서 props 파라미터 등록 후 props.작명 사용
+        modal == true ? <Modal title={title} setTitle={setTitle} backColor={'skyblue'}/> : null
       }
     </div>
   );
@@ -90,12 +93,18 @@ function App() {
   // 1. state 가져다 쓸 때 다른 함수에 있는 변수 가져다 쓸 수 없다.
 
   // const Modal = () => {return()} 
-  function Modal(){
+  // props : 자식이 부모가 가지고 있는 state 사용 가능!
+  function Modal(props){
     return(
-      <div className="modal">
-        <h4>Title</h4>
+      <div className="modal" style={{background : props.backColor}}>
+        <h4>{props.title[0]}</h4>
         <p>Date</p>
         <p>Content</p>
+        <button onClick={() => {
+          let modalTitle = [...props.title];
+          modalTitle[0] = '자바';
+          props.setTitle(modalTitle);
+        }}>글수정</button>
       </div>
     )
   }
