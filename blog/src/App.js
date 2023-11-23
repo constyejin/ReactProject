@@ -11,7 +11,7 @@ function App() {
   // setTitle : state 변경 도와주는 함수
   // 변동시 자동으로 html에 반영되게 만들고 싶다면 state사용
   let [title, setTitle] = useState(['파이썬', '리액트', '자바스크립트']);
-  let [like, setLike] = useState(0);
+  let [like, setLike] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
 
   // JSX 문법
@@ -30,10 +30,17 @@ function App() {
           // 2. 함수의 파라미터는 array안에 있는 자료
           // 3. return 값을 array로 담아준다.
           return (
-            <div className="list">
+            <div className="list" key={i}>
               <div className='list-box'>
                 <h4>{a}
-                  <span onClick={() => {setLike(like + 1)}}>👍🏻</span> {like}
+                  <span onClick={() => {
+                      // like state변경 함수(setLike)를 호출
+                      // [0,0,0] 배열에서 클릭된 순서 0,1,2번째 값을 하나 증가 시킨다.
+                      let newLike = [...like];
+                      newLike[i] = newLike[i] + 1;
+                      setLike(newLike);
+                    }}>👍🏻</span>
+                  <span className='like-count'>{like[i]}</span>
                 </h4>
                 <p>23.11.22</p>
               </div>
