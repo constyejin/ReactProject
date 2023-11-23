@@ -68,6 +68,11 @@ function App() {
                   newTitle[0] = '자바';
                   setTitle(newTitle);
                   }}>글제목 변경</button>
+                  <button onClick={() => {
+                    let newTitle = [...title];
+                    newTitle.splice(i, 1);
+                    setTitle(newTitle);
+                  }}>글삭제</button>
               </div>
             </div>
           )
