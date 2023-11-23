@@ -16,6 +16,7 @@ function App() {
   // State가 여러 곳에서 필요하다면 가장 상위 component인 App에 생성
   let [modalTitle, setmodalTitle] = useState(0);
   let [clicked, setClicked] = useState(0);
+  let [inputVal, setInputVal] = useState('');
 
   // JSX 문법
   // 1. class 넣을 때 => className
@@ -35,7 +36,7 @@ function App() {
           return (
             <div className="list" key={i}>
               <div className='list-box'>
-                <h4 className='title' onClick={(e) => {
+                <h4 className='title' onClick={() => {
                   // let currentClicked = e.target;
                   // clicked == currentClicked ? setModal(false) : setModal(true);
                   setClicked(clicked + 1);
@@ -46,28 +47,51 @@ function App() {
                   }
                   setmodalTitle(i);
                 }}>{a}
-                  <span onClick={() => {
-                      // like state변경 함수(setLike)를 호출
-                      // [0,0,0] 배열에서 클릭된 순서 0,1,2번째 값을 하나 증가 시킨다.
-                      let newLike = [...like];
-                      newLike[i] = newLike[i] + 1;
-                      setLike(newLike);
-                    }}>👍🏻</span>
-                  <span className='like-count'>{like[i]}</span>
+                  <span onClick={(e) => {
+                    // 이벤트 버블링 현상 막기
+                    e.stopPropagation();
+                    // like state변경 함수(setLike)를 호출
+                    // [0,0,0] 배열에서 클릭된 순서 0,1,2번째 값을 하나 증가 시킨다.
+                    let newLike = [...like];
+                    newLike[i] = newLike[i] + 1;
+                    setLike(newLike);
+                  }}>👍🏻</span>
+                  <span>{like[i]}</span>
                 </h4>
                 <p>23.11.22</p>
               </div>
-              <button className='title-btn' onClick={() => {
-                // array, object => reference data type
-                // state가 array / object면 shallow copy를 만들어서 수정해야 한다.
-                let newTitle = [...title];
-                newTitle[0] = '자바';
-                setTitle(newTitle);
-                }}>글제목 변경</button>
+              <div>
+                <button className='title-btn' onClick={() => {
+                  // array, object => reference data type
+                  // state가 array / object면 shallow copy를 만들어서 수정해야 한다.
+                  let newTitle = [...title];
+                  newTitle[0] = '자바';
+                  setTitle(newTitle);
+                  }}>글제목 변경</button>
+              </div>
             </div>
           )
         })
       }
+
+      <div>
+        {/* input에 뭔가 입력시 코드 실행다고 싶다면 => onChange / onInput */}
+        <input onChange={(e) => {
+          // satate 변경 함수는 늦게 처리된다.
+          setInputVal(e.target.value); // 이거 완료되지 전에
+          // console.log(inputVal); // 다음 줄 실행함
+        }}/>
+        <button onClick={() => {
+          let newTitle = [...title];
+          newTitle.push(inputVal);
+          setTitle(newTitle);
+
+          let newLike = [...like];
+          newLike.push(0);
+          setLike(newLike);
+        }}>글추가</button>
+      </div>
+
       <button className='sort-btn' onClick={() => {
         let titleSort = [...title];
         titleSort.sort();
