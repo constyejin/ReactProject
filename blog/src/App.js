@@ -19,44 +19,35 @@ function App() {
   // 2. 데이터 바인딩 => {변수명}
   // 3. style => style={{이름 : '값'}}
 
-  function likeBtn(){
-    console.log(1);
-  }
   return (
     <div className="App">
       <div className='nav'>
         <h4 style={{fontSize : '24px'}}>ReactBlog</h4>
       </div>
-      
-      <div className="list">
-        <div className='list-box'>
-          <h4>{title[0]}
-            <span onClick={() => {setLike(like + 1)}}>👍🏻</span> {like}
-          </h4>
-          <p>23.11.22</p>
-        </div>
-        <button className='title-btn' onClick={() => {
-          // array, object => reference data type
-          // state가 array / object면 shallow copy를 만들어서 수정해야 한다.
-          let newTitle = [...title];
-          newTitle[0] = '자바';
-          setTitle(newTitle);
-          }}>글제목 변경</button>
-      </div>
-
-      <div className="list">
-        <h4>{title[1]}
-          <span>👍🏻</span> 
-        </h4>
-        <p>23.11.22</p>
-      </div>
-
-      <div className="list">
-        <h4>{title[2]}
-          <span>👍🏻</span> 
-        </h4>
-        <p>23.11.22</p>
-      </div>
+      {
+        title.map(function(a, i){
+          // 1. array 자료 갯수만큼 함수안의 코드 실행
+          // 2. 함수의 파라미터는 array안에 있는 자료
+          // 3. return 값을 array로 담아준다.
+          return (
+            <div className="list">
+              <div className='list-box'>
+                <h4>{a}
+                  <span onClick={() => {setLike(like + 1)}}>👍🏻</span> {like}
+                </h4>
+                <p>23.11.22</p>
+              </div>
+              <button className='title-btn' onClick={() => {
+                // array, object => reference data type
+                // state가 array / object면 shallow copy를 만들어서 수정해야 한다.
+                let newTitle = [...title];
+                newTitle[0] = '자바';
+                setTitle(newTitle);
+                }}>글제목 변경</button>
+            </div>
+          )
+        })
+      }
       <button className='sort-btn' onClick={() => {
         let titleSort = [...title];
         titleSort.sort();
