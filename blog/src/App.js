@@ -12,6 +12,7 @@ function App() {
   // 변동시 자동으로 html에 반영되게 만들고 싶다면 state사용
   let [title, setTitle] = useState(['파이썬', '리액트', '자바스크립트']);
   let [like, setLike] = useState(0);
+  let [modal, setModal] = useState(false);
 
   // JSX 문법
   // 1. class 넣을 때 => className
@@ -62,7 +63,12 @@ function App() {
         // console.log(titleSort)
         setTitle(titleSort);
       }}>가나다순 정렬</button>
-      <Modal/> 
+      <button onClick={() => {setModal(true)}}>모달창 열기</button>
+
+      {
+        // 조건문을 중괄호 안에 사용하고 싶을 때 => 삼항 연산자(ternary operator)
+        modal == true ? <Modal/> : null
+      }
     </div>
   );
 }
