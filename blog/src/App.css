@@ -25,6 +25,10 @@ button {
   border-bottom: 1px solid gray;
 }
 
+.title-btn {
+  margin-right: 8px;
+}
+
 .sort-btn {
   margin: 20px;
 }
