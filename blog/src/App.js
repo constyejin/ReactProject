@@ -88,13 +88,15 @@ function App() {
         }}/>
         <button onClick={() => {
           let newTitle = [...title];
-          newTitle.push(inputVal);
+          // 맨 앞에 추가
+          newTitle.unshift(inputVal);
+          // newTitle.push(inputVal);
           setTitle(newTitle);
 
           let newLike = [...like];
           newLike.push(0);
           setLike(newLike);
-        }}>글추가</button>
+        }}>글발행</button>
       </div>
 
       <button className='sort-btn' onClick={() => {
