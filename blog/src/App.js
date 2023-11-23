@@ -13,6 +13,8 @@ function App() {
   let [title, setTitle] = useState(['파이썬', '리액트', '자바스크립트']);
   let [like, setLike] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
+  // State가 여러 곳에서 필요하다면 가장 상위 component인 App에 생성
+  let [modalTitle, setmodalTitle] = useState(0);
 
   // JSX 문법
   // 1. class 넣을 때 => className
@@ -32,7 +34,10 @@ function App() {
           return (
             <div className="list" key={i}>
               <div className='list-box'>
-                <h4>{a}
+                <h4 onClick={() => {
+                  modal == true ? setModal(false) : setModal(true);  
+                  setmodalTitle(i);
+                }}>{a}
                   <span onClick={() => {
                       // like state변경 함수(setLike)를 호출
                       // [0,0,0] 배열에서 클릭된 순서 0,1,2번째 값을 하나 증가 시킨다.
@@ -72,7 +77,7 @@ function App() {
         // 부모 -> 자식 state 전송하는 방법
         // 1. <자식컴포넌트 작명={state이름}
         // 2. 자식 컴포넌트에서 props 파라미터 등록 후 props.작명 사용
-        modal == true ? <Modal title={title} setTitle={setTitle} backColor={'skyblue'}/> : null
+        modal == true ? <Modal title={title} modalTitle={modalTitle} backColor={'skyblue'}/> : null
       }
     </div>
   );
@@ -95,16 +100,12 @@ function App() {
   // const Modal = () => {return()} 
   // props : 자식이 부모가 가지고 있는 state 사용 가능!
   function Modal(props){
-    return(
+    return (
       <div className="modal" style={{background : props.backColor}}>
-        <h4>{props.title[0]}</h4>
+        <h4>{props.title[props.modalTitle]}</h4>
         <p>Date</p>
         <p>Content</p>
-        <button onClick={() => {
-          let modalTitle = [...props.title];
-          modalTitle[0] = '자바';
-          props.setTitle(modalTitle);
-        }}>글수정</button>
+        <button>글수정</button>
       </div>
     )
   }
