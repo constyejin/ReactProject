@@ -1,0 +1,12 @@
+* {
+  text-align: center;
+}
+
+.main-bg {
+  height: 400px;
+  /* css파일에서 src안의 이미지 넣을 때 */
+  background-image: url('./images/bg.jpeg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
