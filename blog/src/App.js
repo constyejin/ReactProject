@@ -111,7 +111,6 @@ function App() {
         // React에선 버튼 누르면 모달창 스위치(State)만 건드린다.
         setModal(!modal);
       }}>모달창</button>
-      <Modal2/>
 
       {
         // 조건문을 중괄호 안에 사용하고 싶을 때 => 삼항 연산자(ternary operator)
@@ -152,24 +151,24 @@ function App() {
   }
 
   // class 문법으로 component 생성
-  class Modal2 extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        name : 'Lee',
-        age : 12
-      }
-    }
-    render(){
-      return (
-        <div>안녕! {this.state.age}
-          <button onClick={() => {
-            this.setState({age : 21})
-          }}>button</button>
-        </div>
-      )
-    }
-  }
+  // class Modal2 extends React.Component {
+  //   constructor(props){
+  //     super(props);
+  //     this.state = {
+  //       name : 'Lee',
+  //       age : 12
+  //     }
+  //   }
+  //   render(){
+  //     return (
+  //       <div>안녕! {this.state.age}
+  //         <button onClick={() => {
+  //           this.setState({age : 21})
+  //         }}>button</button>
+  //       </div>
+  //     )
+  //   }
+  // }
 
   // 응용1. 글에 아무것도 입력안하고 발행버튼 누르는거 막으려면? 
   // 응용2. 글을 하나 추가하면 따봉갯수 개별적용하던 것도 이상해질 수 있습니다.
