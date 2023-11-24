@@ -23,11 +23,11 @@ function App() {
       {/* style={{ backgroundImage : `url(${bg})`}} */}
       <div className='main-bg'></div>
       
-      <Container>
+      <Container className='shoe-list'>
         <Row>
           {
-            shoes.map(function(shoes){
-              return <Item shoes={shoes}></Item>
+            shoes.map(function(shoes, i){
+              return <Item key={i} shoes={shoes}></Item>
             })
           }
         </Row>
