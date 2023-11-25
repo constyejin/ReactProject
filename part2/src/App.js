@@ -27,7 +27,7 @@ function App() {
         <Row>
           {
             shoes.map(function(shoes, i){
-              return <Item key={i} shoes={shoes}></Item>
+              return <Item shoes={shoes} key={i} ></Item>
             })
           }
         </Row>
