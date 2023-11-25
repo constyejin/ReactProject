@@ -4,22 +4,24 @@ import { useState } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
-import Detail from './Datail';
-import {Routes, Route, Link} from 'react-router-dom';
+import Detail from './routes/Datail';
+import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 
 function App() {
   let [shoes, setShoes] = useState(data);
+  // 페이지 이동 도와주는 함수 useNavigate();
+  let navigate = useNavigate();
 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home">
-          <Link to="/">SHOP</Link>
+        <Navbar.Brand href="#home" onClick={() => {navigate('/')}}>SHOP
+          {/* <Link to="/">SHOP</Link> */}
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#detail">
-            <Link to="/detail">Datail</Link>
+          <Nav.Link href="#detail" onClick={() => {navigate('/detail')}}>Detail
+            {/* <Link to="/detail">Datail</Link> */}
           </Nav.Link>
           <Nav.Link href="#shop">Shop</Nav.Link>
         </Nav>
