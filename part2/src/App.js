@@ -50,6 +50,10 @@ function App() {
           <Route path='member' element={<div>Member</div>}></Route>
           <Route path='location' element={<div>Location</div>}></Route>
         </Route>
+        <Route path='/event' element={<Event/>}>
+          <Route path='one' element={<p>첫 주문시 양말 서비스</p>}/>
+          <Route path='two' element={<p>생일기념 쿠폰 받기</p>}/>
+        </Route>
       </Routes>
       {/* style={{ backgroundImage : `url(${bg})`}} */}
     </div>
@@ -67,4 +71,12 @@ function Item(props) {
   )
 }
 
+function Event() {
+  return (
+    <div>
+      <h2>Today Event!</h2>
+      <Outlet/>
+    </div>
+  )
+}
 export default App;
