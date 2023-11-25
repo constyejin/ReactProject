@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .main-bg {
   height: 400px;
   /* css파일에서 src안의 이미지 넣을 때 */
