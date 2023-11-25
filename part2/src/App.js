@@ -5,6 +5,7 @@ import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
 import Detail from './routes/Datail';
+import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 
 function App() {
@@ -16,11 +17,11 @@ function App() {
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home" onClick={() => {navigate('/')}}>SHOP
+        <Navbar.Brand onClick={() => {navigate('/')}}>SHOP
           {/* <Link to="/">SHOP</Link> */}
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#detail" onClick={() => {navigate('/detail')}}>Detail
+          <Nav.Link onClick={() => {navigate('/detail')}}>Detail
             {/* <Link to="/detail">Datail</Link> */}
           </Nav.Link>
           <Nav.Link href="#shop">Shop</Nav.Link>
@@ -44,6 +45,11 @@ function App() {
           </>
         }/>
         <Route path='/detail' element={<Detail/>}/>
+        <Route path='*' element={<div>404 ERROR</div>}/>
+        <Route path='/about' element={<About/>}>
+          <Route path='member' element={<div>Member</div>}></Route>
+          <Route path='location' element={<div>Location</div>}></Route>
+        </Route>
       </Routes>
       {/* style={{ backgroundImage : `url(${bg})`}} */}
     </div>
