@@ -111,13 +111,15 @@ function Detail(props){
 
 // Tip. props.tab 이 귀찮다면 {props 전달 이름}
 function TabComponent({tab}) {
-  if(tab == 0) {
-    return <div>Content 0</div>
-  } else if(tab == 1) {
-    return <div>Content 1</div>
-  } else if (tab == 2) {
-    return <div>Content 2</div>
-  }
+  // if(tab == 0) {
+  //   return <div>Content 0</div>
+  // } else if(tab == 1) {
+  //   return <div>Content 1</div>
+  // } else if (tab == 2) {
+  //   return <div>Content 2</div>
+  // }
+
+  return [<div>Content 0</div>, <div>Content 1</div>, <div>Content 2</div>][tab];
 }
 
 export default Detail;
