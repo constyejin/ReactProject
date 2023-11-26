@@ -67,7 +67,10 @@ function App() {
                 axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => {
                   // ajax 요청 성공시
-                  // console.log(result.data);
+                  result.data.forEach(item => {
+                    console.log(item);
+                    item.img = 'https://mblogthumb-phinf.pstatic.net/20160728_98/ppanppane_1469696985810MaPSh_PNG/%B3%AA%C0%CC%C5%B0_%B7%CE%B0%ED_%283%29.png?type=w800';
+                  });
                   let add = [...shoes, ...result.data];
                   setShoes(add);
                 }).catch(() => {
