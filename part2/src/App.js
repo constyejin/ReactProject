@@ -35,6 +35,27 @@ function App() {
             <div className='main-bg'></div>
             <Container className='shoe-list'>
               <Row>
+                <p className='sort-list'>
+                  <span onClick={(e) => {
+                    let copy = [...shoes];
+                    let sortTitle = copy.sort((a,b) => {
+                      if(a.title > b.title) return 1;;
+                      if(a.title < b.title) return -1;
+                      return 0;
+                    })
+                    setShoes(sortTitle);
+                  }}>이름순</span>
+                  <span className='line'>|</span>
+                  <span onClick={() => {
+                    let copy = [...shoes];
+                    let sortPrice = copy.sort((a,b) => {
+                      if(a.price > b.price) return 1;
+                      if(a.price < b.price) return -1;
+                      return 0;
+                    })
+                    setShoes(sortPrice);
+                  }}>가격순</span>
+                </p>
                 {
                   shoes.map(function(shoes, i){
                     return <Item shoes={shoes} key={i} ></Item>
@@ -44,7 +65,7 @@ function App() {
             </Container>  
           </>
         }/>
-        <Route path='/detail' element={<Detail/>}/>
+        <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>
         <Route path='*' element={<div>404 ERROR</div>}/>
         <Route path='/about' element={<About/>}>
           <Route path='member' element={<div>Member</div>}></Route>
@@ -66,6 +87,7 @@ function Item(props) {
       <img src={props.shoes.img} alt="" width="100%"/>
       <h5>{props.shoes.title}</h5>
       <p>{props.shoes.content}</p>
+      <p>{props.shoes.price}</p>
       <p></p>
     </Col>
   )
