@@ -1,19 +1,18 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-let BlackBox = styled.div`
-  background : black;
-  padding : 40px;
-`
+// let BlackBox = styled.div`
+//   background : black;
+//   padding : 40px;
+// `
 
-let Btn = styled.button`
-color : ${props => props.bg == 'blue' ? 'white' : 'black'};
-  background : ${props => props.bg};
-  border : none;
-  border-radius : 8px;
-  padding : 20px;
-`
-
+// let Btn = styled.button`
+// color : ${props => props.bg == 'blue' ? 'white' : 'black'};
+//   background : ${props => props.bg};
+//   border : none;
+//   border-radius : 8px;
+//   padding : 20px;
+// `
 
 function Detail(props){
   let {id} = useParams();
@@ -27,10 +26,10 @@ function Detail(props){
   console.log(findItem)
   return (
     <div className="container">
-      <BlackBox>
+      {/* <BlackBox>
         <Btn bg="blue">Blue Button</Btn>
         <Btn bg="yellow">Yellow Button</Btn>
-      </BlackBox>
+      </BlackBox> */}
 
       <div className="row">
         <div className="col-md-6">
