@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { Navbar, Container, Nav, Row, Col } from 'react-bootstrap';
+import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
@@ -7,6 +7,7 @@ import data from './data';
 import Detail from './routes/Datail';
 import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
   let [shoes, setShoes] = useState(data);
@@ -62,6 +63,16 @@ function App() {
                   })
                 }
               </Row>
+              <Button onClick={() => {
+                axios.get('https://codingapple1.github.io/shop/data2.json')
+                .then((result) => {
+                  // ajax 요청 성공시
+                  console.log(result.data);
+                }).catch(() => {
+                  // ajax 요청 실패시
+                  console.log('실패함ㅠ')
+                })
+              }} variant="dark">BUTTON</Button>
             </Container>  
           </>
         }/>
