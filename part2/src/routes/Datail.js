@@ -30,6 +30,19 @@ import { Nav, Tab } from 'react-bootstrap';
 // `
 
 function Detail(props){
+  // Detail 페이지 로드시 opacity : 0 -> 1 Animation
+  let [pageFade, setPageFade] = useState('');
+
+  useEffect(() => {
+    let timer = setTimeout(() => { setPageFade('end') }, 100); // 2번
+    
+    return(() => {
+      clearTimeout(timer);
+      setPageFade(''); // 1번
+    })
+  },[])
+
+
   useEffect(() => {
     // component mount, update(재랜더링)시 실행
     let timer = setTimeout(() => {
@@ -69,7 +82,7 @@ function Detail(props){
   }, [val])
 
   return (
-    <div className="container">
+    <div className={`container start ${pageFade}`}>
       {
         alert == true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null
       }
