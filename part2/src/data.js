@@ -4,7 +4,7 @@ let data = [
     img : 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/88c9e86c-58d5-4cfc-b1ee-e18213a5ef2e/%EC%BD%94%EB%A5%B4%ED%85%8C%EC%A6%88-%EC%97%AC%EC%84%B1-%EC%8B%A0%EB%B0%9C-ak3bBZzW.png',
     title : "나이키 코르테즈",
     content : "여성 신발",
-    price : 139000
+    price : 129000
   },
 
   {
