@@ -67,7 +67,9 @@ function App() {
                 axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => {
                   // ajax 요청 성공시
-                  console.log(result.data);
+                  // console.log(result.data);
+                  let add = [...shoes, ...result.data];
+                  setShoes(add);
                 }).catch(() => {
                   // ajax 요청 실패시
                   console.log('실패함ㅠ')
