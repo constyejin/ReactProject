@@ -63,7 +63,8 @@ function App() {
                   })
                 }
               </Row>
-              <Button onClick={() => {
+            </Container>  
+            <Button onClick={() => {
                 axios.get('https://codingapple1.github.io/shop/data2.json')
                 .then((result) => {
                   // ajax 요청 성공시
@@ -77,8 +78,7 @@ function App() {
                   // ajax 요청 실패시
                   console.log('실패함ㅠ')
                 })
-              }} variant="dark">BUTTON</Button>
-            </Container>  
+            }} variant="dark">MORE</Button>
           </>
         }/>
         <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>
