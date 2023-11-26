@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { Nav, Tab } from 'react-bootstrap';
 
 // class Detail2 extends React.Component {
 //   componentDidMount(){
@@ -29,23 +30,23 @@ import styled from 'styled-components';
 // `
 
 function Detail(props){
-  // useEffect(() => {
-  //   // component mount, update(재랜더링)시 실행
-  //   let timer = setTimeout(() => {
-  //     setAlert(false);
-  //   },2000)
+  useEffect(() => {
+    // component mount, update(재랜더링)시 실행
+    let timer = setTimeout(() => {
+      setAlert(false);
+    },2000)
 
-  //   // clean up function
-  //   // useEffect 동작 전에 실행되는 return () => {}
-  //   return() => {
-  //     // clean up function은 mount시 실행 X unmount시 실행 O
-  //     // 기존 코드 치울 때 많이 사용
-  //     clearTimeout(timer);
-  //   }
+    // clean up function
+    // useEffect 동작 전에 실행되는 return () => {}
+    return() => {
+      // clean up function은 mount시 실행 X unmount시 실행 O
+      // 기존 코드 치울 때 많이 사용
+      clearTimeout(timer);
+    }
 
-  //   // useEffect 실행조건 넣을 수 있는 곳 []
-  //   // [count] 대괄호 안 state가 변할 때만 실행 (+ mount시)
-  // }, [])
+    // useEffect 실행조건 넣을 수 있는 곳 []
+    // [count] 대괄호 안 state가 변할 때만 실행 (+ mount시)
+  }, [])
 
   let {id} = useParams();
   // .find(), .filter() 사용
@@ -55,7 +56,9 @@ function Detail(props){
     return x.id == id;
   })
   let [count, setCount] = useState(0);
+  let [alert, setAlert] = useState(true);
   let [val, setVal] = useState('');
+  let [tab, setTab] = useState(0);
 
   useEffect(() => {
     if(isNaN(val)) {
@@ -67,15 +70,15 @@ function Detail(props){
 
   return (
     <div className="container">
-      {/* {
+      {
         alert == true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null
-      } */}
+      }
       {/* <BlackBox>
         <Btn bg="blue">Blue Button</Btn>
         <Btn bg="yellow">Yellow Button</Btn>
       </BlackBox> */}
 
-      <div className="row">
+      <div className="row info-box">
         <div className="col-md-6">
           <img src={findItem.img} width="100%" />
         </div>
@@ -89,8 +92,32 @@ function Detail(props){
           <button className="btn btn-danger">주문하기</button> 
         </div>
       </div>
+      
+      <Nav variant="tabs"  defaultActiveKey="link0">
+        <Nav.Item>
+          <Nav.Link onClick={() => {setTab(0)}} eventKey="link0">버튼0</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link onClick={() => {setTab(1)}}  eventKey="link1">버튼1</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link onClick={() => {setTab(2)}}  eventKey="link2">버튼2</Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <TabComponent tab={tab}/>
     </div> 
   )
+}
+
+// Tip. props.tab 이 귀찮다면 {props 전달 이름}
+function TabComponent({tab}) {
+  if(tab == 0) {
+    return <div>Content 0</div>
+  } else if(tab == 1) {
+    return <div>Content 1</div>
+  } else if (tab == 2) {
+    return <div>Content 2</div>
+  }
 }
 
 export default Detail;
