@@ -1,5 +1,19 @@
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
+// class Detail2 extends React.Component {
+//   componentDidMount(){
+//     // component mount시 실행
+//   }
+//   componentDidUpdate(){
+//     // component update시 실행
+//   }
+//   componentWillUnmount(){
+//     // component unmount시 실행
+//   }
+// }
+
 
 // let BlackBox = styled.div`
 //   background : black;
@@ -15,6 +29,13 @@ import styled from 'styled-components';
 // `
 
 function Detail(props){
+  useEffect(() => {
+    // component mount, update(재랜더링)시 실행
+    setTimeout(() => {
+      setAlert(false);
+    },2000)
+  })
+
   let {id} = useParams();
   // .find(), .filter() 사용
   // array 자료 안에서 원하는 항목 찾기
@@ -22,10 +43,14 @@ function Detail(props){
   let findItem = props.shoes.find(function(x){
     return x.id == id;
   })
+  let [count, setCount] = useState(0);
+  let [alert, setAlert] = useState(true);
 
-  console.log(findItem)
   return (
     <div className="container">
+      {
+        alert == true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null
+      }
       {/* <BlackBox>
         <Btn bg="blue">Blue Button</Btn>
         <Btn bg="yellow">Yellow Button</Btn>
