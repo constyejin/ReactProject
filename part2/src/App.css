@@ -33,3 +33,12 @@ a {
 .line {
   margin: 0 6px;
 }
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity .5s;
+}
