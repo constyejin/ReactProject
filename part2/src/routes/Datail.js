@@ -61,9 +61,9 @@ function Detail(props){
     if(isNaN(val)) {
       alert('숫자만 입력해라.');
     } else {
-      console.log(val)
+      console.log(val);
     }
-  })
+  }, [val])
 
   return (
     <div className="container">
@@ -81,8 +81,7 @@ function Detail(props){
         </div>
         <div className="col-md-6">
           <input onChange={(e) => {
-            let newVal = e.target.value;
-            setVal(newVal);
+            setVal(e.target.value);
           }} type="text" />
           <h4 className="pt-5">{findItem.title}</h4>
           <p>{findItem.content}</p>
