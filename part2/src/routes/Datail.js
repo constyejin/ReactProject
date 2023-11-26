@@ -55,7 +55,15 @@ function Detail(props){
     return x.id == id;
   })
   let [count, setCount] = useState(0);
-  let [alert, setAlert] = useState(true);
+  let [val, setVal] = useState('');
+
+  useEffect(() => {
+    if(isNaN(val)) {
+      alert('숫자만 입력해라.');
+    } else {
+      console.log(val)
+    }
+  })
 
   return (
     <div className="container">
@@ -72,7 +80,10 @@ function Detail(props){
           <img src={findItem.img} width="100%" />
         </div>
         <div className="col-md-6">
-          <input type="text" />
+          <input onChange={(e) => {
+            let newVal = e.target.value;
+            setVal(newVal);
+          }} type="text" />
           <h4 className="pt-5">{findItem.title}</h4>
           <p>{findItem.content}</p>
           <p>{findItem.price}</p>
