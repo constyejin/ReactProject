@@ -29,12 +29,23 @@ import styled from 'styled-components';
 // `
 
 function Detail(props){
-  useEffect(() => {
-    // component mount, update(재랜더링)시 실행
-    setTimeout(() => {
-      setAlert(false);
-    },2000)
-  })
+  // useEffect(() => {
+  //   // component mount, update(재랜더링)시 실행
+  //   let timer = setTimeout(() => {
+  //     setAlert(false);
+  //   },2000)
+
+  //   // clean up function
+  //   // useEffect 동작 전에 실행되는 return () => {}
+  //   return() => {
+  //     // clean up function은 mount시 실행 X unmount시 실행 O
+  //     // 기존 코드 치울 때 많이 사용
+  //     clearTimeout(timer);
+  //   }
+
+  //   // useEffect 실행조건 넣을 수 있는 곳 []
+  //   // [count] 대괄호 안 state가 변할 때만 실행 (+ mount시)
+  // }, [])
 
   let {id} = useParams();
   // .find(), .filter() 사용
@@ -48,9 +59,9 @@ function Detail(props){
 
   return (
     <div className="container">
-      {
+      {/* {
         alert == true ? <div className="alert alert-warning">2초이내 구매시 할인</div> : null
-      }
+      } */}
       {/* <BlackBox>
         <Btn bg="blue">Blue Button</Btn>
         <Btn bg="yellow">Yellow Button</Btn>
@@ -61,6 +72,7 @@ function Detail(props){
           <img src={findItem.img} width="100%" />
         </div>
         <div className="col-md-6">
+          <input type="text" />
           <h4 className="pt-5">{findItem.title}</h4>
           <p>{findItem.content}</p>
           <p>{findItem.price}</p>
