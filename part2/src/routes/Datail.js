@@ -118,8 +118,26 @@ function TabComponent({tab}) {
   // } else if (tab == 2) {
   //   return <div>Content 2</div>
   // }
+  
+  let [fade, setFade] = useState('');
+  
+  // tab state가 변경될 때 마다 실행
+  useEffect(() => {
+    // React automatic batching
+    // state 변경하는 함수들이 근처에 있다면 합쳐서 한 번만 state를 변경한다. => setTimeout()으로 미세한 시간차 두기
+    let timer = setTimeout(() => { setFade('end') },100); // 2번
+    
+    return(() => {
+      clearTimeout(timer);
+      setFade(''); // 1번
+    })
+  }, [tab]);
 
-  return [<div>Content 0</div>, <div>Content 1</div>, <div>Content 2</div>][tab];
+  return (
+    <div className={`start ${fade}`}>
+      {[<div>Content 0</div>, <div>Content 1</div>, <div>Content 2</div>][tab]}
+    </div>
+  )
 }
 
 export default Detail;
