@@ -117,13 +117,13 @@ function Detail(props){
           <Nav.Link onClick={() => {setTab(2)}}  eventKey="link2">버튼2</Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabComponent tab={tab}/>
+      <TabContent tab={tab} shoes={props.shoes}/>
     </div> 
   )
 }
 
 // Tip. props.tab 이 귀찮다면 {props 전달 이름}
-function TabComponent({tab}) {
+function TabContent({tab, shoes}) {
   // if(tab == 0) {
   //   return <div>Content 0</div>
   // } else if(tab == 1) {
@@ -148,7 +148,7 @@ function TabComponent({tab}) {
 
   return (
     <div className={`start ${fade}`}>
-      {[<div>Content 0</div>, <div>Content 1</div>, <div>Content 2</div>][tab]}
+      {[<div>{shoes[0].title}</div>, <div>Content 1</div>, <div>Content 2</div>][tab]}
     </div>
   )
 }
