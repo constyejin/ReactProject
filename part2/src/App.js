@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
@@ -9,8 +9,12 @@ import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import axios from 'axios';
 
+// Context API로 TabContent에 state 전송
+let Context1 = createContext();
+
 function App() {
   let [shoes, setShoes] = useState(data);
+  let [stock, setStock] = useState([10, 11, 12]);
   // 페이지 이동 도와주는 함수 useNavigate();
   let navigate = useNavigate();
 
@@ -81,7 +85,11 @@ function App() {
             }} variant="dark">MORE</Button>
           </>
         }/>
-        <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>
+        <Route path='/detail/:id' element={
+          <Context1.Provider value={{stock, shoes}}>
+            <Detail shoes={shoes}/>
+          </Context1.Provider>
+        }/>
         <Route path='*' element={<div>404 ERROR</div>}/>
         <Route path='/about' element={<About/>}>
           <Route path='member' element={<div>Member</div>}></Route>
