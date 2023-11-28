@@ -10,7 +10,7 @@ import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import axios from 'axios';
 
 // Context API로 TabContent에 state 전송
-let Context1 = createContext();
+export let Context1 = createContext();
 
 function App() {
   let [shoes, setShoes] = useState(data);
