@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Nav, Tab } from 'react-bootstrap';
+import {Context1} from '../App';
 
 // class Detail2 extends React.Component {
 //   componentDidMount(){
@@ -30,6 +31,9 @@ import { Nav, Tab } from 'react-bootstrap';
 // `
 
 function Detail(props){
+  // 보관함 해체
+  let {stock} = useContext(Context1);
+
   // Detail 페이지 로드시 opacity : 0 -> 1 Animation
   let [pageFade, setPageFade] = useState('');
 
@@ -117,13 +121,13 @@ function Detail(props){
           <Nav.Link onClick={() => {setTab(2)}}  eventKey="link2">버튼2</Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContent tab={tab} shoes={props.shoes}/>
+      <TabContent tab={tab}/>
     </div> 
   )
 }
 
 // Tip. props.tab 이 귀찮다면 {props 전달 이름}
-function TabContent({tab, shoes}) {
+function TabContent({tab}) {
   // if(tab == 0) {
   //   return <div>Content 0</div>
   // } else if(tab == 1) {
@@ -133,6 +137,7 @@ function TabContent({tab, shoes}) {
   // }
   
   let [fade, setFade] = useState('');
+  let {stock} = useContext(Context1);
   
   // tab state가 변경될 때 마다 실행
   useEffect(() => {
@@ -148,7 +153,8 @@ function TabContent({tab, shoes}) {
 
   return (
     <div className={`start ${fade}`}>
-      {[<div>{shoes[0].title}</div>, <div>Content 1</div>, <div>Content 2</div>][tab]}
+      {stock}
+      {[<div>Content 0</div>, <div>Content 1</div>, <div>Content 2</div>][tab]}
     </div>
   )
 }
