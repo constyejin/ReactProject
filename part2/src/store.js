@@ -16,7 +16,7 @@ let item = createSlice({
   name : 'item',
   initialState : [
     {id : 0, name : '나이키 코르테즈', count : 2},
-    {id : 2, name : '나이키 덩크 로우 프리미엄', count : 1}
+    {id : 1, name : '나이키 덩크 로우 프리미엄', count : 10}
   ] 
 })
 
