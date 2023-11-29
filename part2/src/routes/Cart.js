@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 function Cart() {
 
   // Redux store 가져오기
-  // Redux store에 있던 모든 state가 남음
-  let a = useSelector((state) => { return state })
-  console.log(a.user)
+  // state : Redux store에 있던 모든 state
+  let items = useSelector((state) => state.item)
+  console.log(items)
 
   return (
     <div>
@@ -21,12 +21,18 @@ function Cart() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>안녕</td>
-            <td>안녕</td>
-            <td>안녕</td>
-          </tr>
+          {
+            items.map(function(a, i) {
+              return (
+                <tr key={i}>
+                  <th>{a.id}</th>
+                  <th>{a.name}</th>
+                  <th>{a.count}</th>
+                  <th>변경하기</th>
+                </tr>
+              )
+            })
+          }
         </tbody>
       </Table> 
     </div>
