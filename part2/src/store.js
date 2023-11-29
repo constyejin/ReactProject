@@ -16,7 +16,7 @@ let user = createSlice({
   },
   reducers : {
     plusAge(state){
-      state.age = state.age + 1
+      state.age += 1
     }
   }
 })
