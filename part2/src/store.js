@@ -14,11 +14,14 @@ let user = createSlice({
       state.name = 'Yejin Lee'
     },
 
-    plusAge(state){
-      state.age += 1
-    }
+    plusAge(state, action){
+      // state 변경함수에 파라미터 뚫는 법
+      // action : state 변경 함수
+      state.age += action.payload
+    },
   }
 })
+
 
 export let {changeName, plusAge} = user.actions
 

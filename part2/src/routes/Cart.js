@@ -16,7 +16,7 @@ function Cart() {
     <div>
       <h4>{state.user.name} {state.user.age}의 장바구니</h4>
       <button onClick={() => { dispatch(changeName()) }}>변경하기</button>
-      <button onClick={() => { dispatch(plusAge()) }}>+ 1</button>
+      <button onClick={() => { dispatch(plusAge(100)) }}>+</button>
       <Table>
         <thead>
           <tr>
