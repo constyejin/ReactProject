@@ -5,6 +5,7 @@ import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
 import Detail from './routes/Datail';
+import Cart from './routes/Cart'
 import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import axios from 'axios';
@@ -17,7 +18,7 @@ function App() {
   let [stock, setStock] = useState([10, 11, 12]);
   // 페이지 이동 도와주는 함수 useNavigate();
   let navigate = useNavigate();
-
+  
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -99,6 +100,8 @@ function App() {
           <Route path='one' element={<p>첫 주문시 양말 서비스</p>}/>
           <Route path='two' element={<p>생일기념 쿠폰 받기</p>}/>
         </Route>
+
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
       {/* style={{ backgroundImage : `url(${bg})`}} */}
     </div>
