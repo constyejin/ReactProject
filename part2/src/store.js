@@ -12,9 +12,8 @@ let user = createSlice({
       // return {name : 'Yejin Lee', age : 30}
       // array / object의 경우 직접 수정해도 state 변경됨 (immer.js 도움 -> 알아서 state 복사본 리턴)
       state.name = 'Yejin Lee'
-    }
-  },
-  reducers : {
+    },
+
     plusAge(state){
       state.age += 1
     }
