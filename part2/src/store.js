@@ -12,18 +12,27 @@ let stock = createSlice({
 let item = createSlice({
   name : 'item',
   initialState : [
-    {id : 0, name : '나이키 코르테즈', count : 2},
-    {id : 1, name : '나이키 덩크 로우 프리미엄', count : 10}
+    {id : 0, title : '나이키 코르테즈', count : 2},
+    {id : 1, title : '나이키 덩크 로우 프리미엄', count : 10}
   ],
   reducers : {
     increase(state, action){
       // console.log(state[action.payload].count += 1)
       state[action.payload].count += 1
+    },
+    
+    addItem(state, action){
+      state.push({
+        id : action.payload.id,
+        title : action.payload.title,
+        count : action.payload.price
+      })
+      console.log('카트 담기 완료!')
     }
   }
 })
 
-export let {increase} = item.actions
+export let {increase, addItem} = item.actions
 
 export default configureStore({
   reducer: { 
