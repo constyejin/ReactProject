@@ -39,7 +39,7 @@ function Cart() {
               return (
                 <tr key={i}>
                   <th>{a.id}</th>
-                  <th>{a.name}</th>
+                  <th>{a.title}</th>
                   <th>{a.count}</th>
                   <th>
                     <button onClick={() => {
