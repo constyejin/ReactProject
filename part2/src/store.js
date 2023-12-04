@@ -17,9 +17,11 @@ let item = createSlice({
   ],
   reducers : {
     increase(state, action){
-      state.map((shoes, index) => {
-        console.log(shoes)
-      })
+      console.log(state[action.payload].count += 1)
+      state[action.payload].count += action.payload
+      // let id = state[i].id;
+      // console.log(id)
+      // state[id].count += action.payload
     }
   }
 })
