@@ -17,7 +17,9 @@ let item = createSlice({
   ],
   reducers : {
     increase(state, action){
-      state[0].count += action.payload
+      state.map((shoes, index) => {
+        console.log(shoes)
+      })
     }
   }
 })

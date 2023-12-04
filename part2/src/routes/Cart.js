@@ -17,7 +17,7 @@ function Cart() {
     {id : 0, name : '나이키 코르테즈', count : 2},
     {id : 1, name : '나이키 덩크 로우 프리미엄', count : 10}
   ]
-  console.log(data[0].count)
+  // console.log(data[0].count)
 
   return (
     <div>
@@ -43,9 +43,11 @@ function Cart() {
                   <th>{a.count}</th>
                   <th>
                     <button onClick={() => {
+                      // console.log(i)
                       // 버튼 클릭시 수량 + 1
                       // id값에 맞는 배열 번호 수량 + 1 시키기
-                      dispatch(increase(1))
+                      // console.log(state.item[i].id)
+                      dispatch(increase(state.item[i].id, 1))
                     }}>+</button>
                   </th>
                 </tr>
