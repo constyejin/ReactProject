@@ -23,12 +23,7 @@ let item = createSlice({
     },
     
     addItem(state, action){
-      state.push({
-        id : action.payload.id,
-        title : action.payload.title,
-        count : action.payload.price
-      })
-      console.log('카트 담기 완료!')
+      state.push(action.payload)
     }
   }
 })
