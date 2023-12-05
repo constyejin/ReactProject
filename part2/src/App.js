@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
@@ -14,6 +14,10 @@ import axios from 'axios';
 export let Context1 = createContext();
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]))
+  },[])
+
   // localStorage에 array, object 저장하려면 JSON으로 변환
   // array, object -> JSON 변환 JSON.stringfy()
   let obj = {name : 'Lee'};
@@ -21,6 +25,7 @@ function App() {
   // JSON -> array, object 변환 JSON.parse()
   let get = localStorage.getItem('data');
   console.log(JSON.parse(get).name);
+  localStorage.removeItem('data')
 
 
   let [shoes, setShoes] = useState(data);
