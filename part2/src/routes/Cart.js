@@ -2,7 +2,7 @@ import React from 'react'
 import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName, plusAge } from '../store/userSlice';
-import { increase } from '../store'
+import { decrease, increase } from '../store'
 
 function Cart() {
 
@@ -47,8 +47,11 @@ function Cart() {
                       // 버튼 클릭시 수량 + 1
                       // id값에 맞는 배열 번호 수량 + 1 시키기
                       // console.log(state.item[i].id)
-                      dispatch(increase(state.item[i].id))
+                      dispatch(increase(items[i].id))
                     }}>+</button>
+                    <button onClick={() => {
+                      dispatch(decrease(items[i].id))
+                    }}>-</button>
                   </th>
                 </tr>
               )

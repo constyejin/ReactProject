@@ -21,6 +21,13 @@ let item = createSlice({
       state[num].count++
       // state[action.payload].count += 1
     },
+
+    decrease(state, action){
+      let num = state.findIndex((a) => { return a.id === action.payload})
+      if(state[num].count > 0) {
+        state[num].count--
+      }
+    },
     
     addItem(state, action){
       state.push(action.payload)
@@ -28,7 +35,7 @@ let item = createSlice({
   }
 })
 
-export let {increase, addItem} = item.actions
+export let {increase, decrease, addItem} = item.actions
 
 export default configureStore({
   reducer: { 
