@@ -24,7 +24,7 @@ function App() {
   localStorage.setItem('data', JSON.stringify(obj));
   // JSON -> array, object 변환 JSON.parse()
   let get = localStorage.getItem('data');
-  console.log(JSON.parse(get).name);
+  // console.log(JSON.parse(get).name);
   localStorage.removeItem('data')
 
 
@@ -81,7 +81,7 @@ function App() {
                     return (
                       <Col onClick={() => {
                         navigate(`/detail/${shoes.id}`)
-                      }}>
+                      }} key={i}>
                         <Item shoes={shoes} key={i} ></Item>
                       </Col>
                     )
