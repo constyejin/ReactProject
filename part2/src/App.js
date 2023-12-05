@@ -18,6 +18,10 @@ function App() {
   // array, object -> JSON 변환 JSON.stringfy()
   let obj = {name : 'Lee'};
   localStorage.setItem('data', JSON.stringify(obj));
+  // JSON -> array, object 변환 JSON.parse()
+  let get = localStorage.getItem('data');
+  console.log(JSON.parse(get))
+  
 
   let [shoes, setShoes] = useState(data);
   let [stock, setStock] = useState([10, 11, 12]);
