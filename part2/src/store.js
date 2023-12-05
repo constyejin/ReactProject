@@ -36,12 +36,12 @@ let item = createSlice({
     },
     
     removeItem(state, action) {
-
+      state.splice(action.payload, 1);
     }
   }
 })
 
-export let {increase, decrease, addItem} = item.actions
+export let {increase, decrease, addItem, removeItem} = item.actions
 
 export default configureStore({
   reducer: { 
