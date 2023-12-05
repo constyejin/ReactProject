@@ -47,7 +47,7 @@ function Cart() {
                       // 버튼 클릭시 수량 + 1
                       // id값에 맞는 배열 번호 수량 + 1 시키기
                       // console.log(state.item[i].id)
-                      dispatch(increase(state.item[i].id, 1))
+                      dispatch(increase(state.item[i].id))
                     }}>+</button>
                   </th>
                 </tr>

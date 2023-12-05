@@ -17,8 +17,9 @@ let item = createSlice({
   ],
   reducers : {
     increase(state, action){
-      // console.log(state[action.payload].count += 1)
-      state[action.payload].count += 1
+      let num = state.findIndex((a) => { return a.id === action.payload })
+      state[num].count++
+      // state[action.payload].count += 1
     },
     
     addItem(state, action){
