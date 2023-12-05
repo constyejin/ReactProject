@@ -26,11 +26,17 @@ let item = createSlice({
       let num = state.findIndex((a) => { return a.id === action.payload})
       if(state[num].count > 0) {
         state[num].count--
+      } else if(state[num].count == 0) {
+        alert('상품을 삭제하시겠습니까?')
       }
     },
     
     addItem(state, action){
       state.push(action.payload)
+    },
+    
+    removeItem(state, action) {
+
     }
   }
 })
