@@ -41,7 +41,7 @@ function App() {
           {/* <Link to="/">SHOP</Link> */}
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link onClick={() => {navigate('/detail')}}>Detail
+          <Nav.Link onClick={() => {navigate('/detail/0')}}>Detail
             {/* <Link to="/detail">Datail</Link> */}
           </Nav.Link>
           <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
