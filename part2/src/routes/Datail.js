@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Nav, Tab } from 'react-bootstrap';
 import {Context1} from '../App';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store';
+
 
 // class Detail2 extends React.Component {
 //   componentDidMount(){
@@ -76,12 +79,13 @@ function Detail(props){
   let [alert, setAlert] = useState(true);
   let [val, setVal] = useState('');
   let [tab, setTab] = useState(0);
+  let dispatch = useDispatch();
 
   useEffect(() => {
     if(isNaN(val)) {
       alert('숫자만 입력해라.');
     } else {
-      console.log(val);
+      // console.log(val);
     }
   }, [val])
 
@@ -106,7 +110,9 @@ function Detail(props){
           <h4 className="pt-5">{findItem.title}</h4>
           <p>{findItem.content}</p>
           <p>{findItem.price}</p>
-          <button className="btn btn-danger">주문하기</button> 
+          <button onClick={() => {
+            dispatch(addItem(findItem))
+          }} className="btn btn-danger">주문하기</button> 
         </div>
       </div>
       
