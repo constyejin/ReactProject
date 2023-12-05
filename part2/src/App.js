@@ -30,7 +30,7 @@ function App() {
           <Nav.Link onClick={() => {navigate('/detail')}}>Detail
             {/* <Link to="/detail">Datail</Link> */}
           </Nav.Link>
-          <Nav.Link href="#shop">Shop</Nav.Link>
+          <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
         </Nav>
         </Container>
       </Navbar>
