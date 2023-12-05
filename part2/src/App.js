@@ -14,6 +14,11 @@ import axios from 'axios';
 export let Context1 = createContext();
 
 function App() {
+  // localStorage에 array, object 저장하려면 JSON으로 변환
+  // array, object -> JSON 변환 JSON.stringfy()
+  let obj = {name : 'Lee'};
+  localStorage.setItem('data', JSON.stringify(obj));
+
   let [shoes, setShoes] = useState(data);
   let [stock, setStock] = useState([10, 11, 12]);
   // 페이지 이동 도와주는 함수 useNavigate();
