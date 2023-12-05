@@ -6,7 +6,6 @@ import {Context1} from '../App';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../store';
 
-
 // class Detail2 extends React.Component {
 //   componentDidMount(){
 //     // component mount시 실행
@@ -81,6 +80,7 @@ function Detail(props){
   let [tab, setTab] = useState(0);
   let dispatch = useDispatch();
 
+
   useEffect(() => {
     if(isNaN(val)) {
       alert('숫자만 입력해라.');
@@ -111,7 +111,7 @@ function Detail(props){
           <p>{findItem.content}</p>
           <p>{findItem.price}</p>
           <button onClick={() => {
-            dispatch(addItem(findItem))
+            dispatch(addItem( { id : findItem.id, title : findItem.title, count : findItem.price } ))
           }} className="btn btn-danger">주문하기</button> 
         </div>
       </div>
