@@ -78,7 +78,13 @@ function App() {
                 </p>
                 {
                   shoes.map(function(shoes, i){
-                    return <Item shoes={shoes} key={i} ></Item>
+                    return (
+                      <Col onClick={() => {
+                        navigate(`/detail/${shoes.id}`)
+                      }}>
+                        <Item shoes={shoes} key={i} ></Item>
+                      </Col>
+                    )
                   })
                 }
               </Row>
@@ -124,13 +130,13 @@ function App() {
 
 function Item(props) {
   return (
-    <Col>
+    <>
       <img src={props.shoes.img} alt="" width="100%"/>
       <h5>{props.shoes.title}</h5>
       <p>{props.shoes.content}</p>
       <p>{props.shoes.price}</p>
       <p></p>
-    </Col>
+    </>
   )
 }
 
