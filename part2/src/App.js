@@ -10,6 +10,7 @@ import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import axios from 'axios';
 import { type } from '@testing-library/user-event/dist/type';
+import { useQuery } from 'react-query';
 
 // Context API로 TabContent에 state 전송
 export let Context1 = createContext();
@@ -35,20 +36,44 @@ function App() {
   let [stock, setStock] = useState([10, 11, 12]);
   // 페이지 이동 도와주는 함수 useNavigate();
   let navigate = useNavigate();
+
+  // react-query를 이용한 ajax 요청
+  // 장점 1. 성공 / 실패 / 로딩중 쉽게 파악 가능하다.
+  // 장점 2. 틈만나면 자동으로 refetch(재요청) 해준다.
+  // 장점 3. 요청 실패시 알아서 retry 해준다.
+  // 장점 4. state 공유 안해도 된다.
+  // 장점 5. ajax 결과 캐싱 기능(성공 결과 5분동안 기억)
+  let result = useQuery('test', () => 
+    axios.get('https://codingapple1.github.io/userdata.json').then((a) => {
+      console.log('Ajax 요청 성공')
+      return a.data
+    }),
+    { staleTime : 2000 }
+  )
+
+  // result.data
+  // result.isLoading
+  // result.error
   
   return (
-    <div className="App">
+    <div classNameß="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand onClick={() => {navigate('/')}}>SHOP
-          {/* <Link to="/">SHOP</Link> */}
-        </Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link onClick={() => {navigate('/detail/0')}}>Detail
-            {/* <Link to="/detail">Datail</Link> */}
-          </Nav.Link>
-          <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
-        </Nav>
+          <Navbar.Brand onClick={() => {navigate('/')}}>SHOP
+            {/* <Link to="/">SHOP</Link> */}
+          </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link onClick={() => {navigate('/detail/0')}}>Detail
+              {/* <Link to="/detail">Datail</Link> */}
+            </Nav.Link>
+            <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
+          </Nav>
+          <Nav className='ms-auto'>
+            {/* {result.isLoading ? '로딩중' : result.data.name} 님! */}
+            {result.isLoading && '로딩중'}
+            {result.error && 'ERROR!'}
+            {result.data && result.data.name} 님!
+          </Nav>
         </Container>
       </Navbar>
 
