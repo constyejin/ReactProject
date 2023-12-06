@@ -1,16 +1,23 @@
 import logo from './logo.svg';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, lazy } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
-import Detail from './routes/Datail';
-import Cart from './routes/Cart'
 import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import axios from 'axios';
 import { type } from '@testing-library/user-event/dist/type';
 import { useQuery } from 'react-query';
+
+// import Detail from './routes/Datail';
+// import Cart from './routes/Cart'
+
+// 필요해질 때 import (자원 절약)
+// 사이트를 발행할 때도 별도의 js파일로 분리된다
+// 단점 : Detail, Cart 컴포넌트 로딩시간 발생
+const Detail = lazy(() => import('./routes/Datail'))
+const Cart = lazy(() => import('./routes/Cart'))
 
 // Context API로 TabContent에 state 전송
 export let Context1 = createContext();
