@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { createContext, useEffect, useState, lazy, Suspense } from 'react';
+import { createContext, useEffect, useState, lazy, Suspense, useTransition } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
@@ -164,6 +164,7 @@ function App() {
         </Routes>
       </Suspense>
       {/* style={{ backgroundImage : `url(${bg})`}} */}
+      <Improve/>
     </div>
   );
 }
@@ -185,6 +186,32 @@ function Event() {
     <div>
       <h2>Today Event!</h2>
       <Outlet/>
+    </div>
+  )
+}
+
+let a = new Array(10000).fill(0);
+
+function Improve() {
+  let [name, setName] = useState('')
+  // startTransition로 성능저하를 일으키는 문제 state를 감싼다.
+  // isPending은 startTransition이 처리중일 때 true로 변한다.
+  let [isPending, startTransition] = useTransition()
+
+  return(
+    <div>
+      <input onChange={(e) => { 
+        startTransition(() => {
+          setName(e.target.value)
+        }) 
+      }} type="text" />
+
+      {
+        isPending ? 'Loading...' : 
+        a.map((item, i) => {
+          return <div key={i}>{name}</div>
+        })
+      }
     </div>
   )
 }
