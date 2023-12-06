@@ -63,7 +63,7 @@ function App() {
   // result.error
   
   return (
-    <div classNameß="App">
+    <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand onClick={() => {navigate('/')}}>SHOP
