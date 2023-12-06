@@ -12,6 +12,9 @@ app.get('/', function(request, response){
   response.sendFile(path.join(__dirname, './build/index.html'));
 })
 
+app.get('/product', function(request, response){
+  response.json({name : 'Nike shoes'})
+})
 
 app.get('*', function(request, response){
   response.sendFile(path.join(__dirname, './build/index.html'));
