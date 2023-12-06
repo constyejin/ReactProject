@@ -82,10 +82,10 @@ function App() {
                     return (
                       <Col onClick={() => {
                         navigate(`/detail/${shoes.id}`)
-                        let get = JSON.parse(localStorage.getItem('watched'))
-                        get.push(shoes.id)
-                        let newGet = [...new Set(get)]
-                        localStorage.setItem('watched', JSON.stringify(newGet))
+                        // let get = JSON.parse(localStorage.getItem('watched'))
+                        // get.push(shoes.id)
+                        // let newGet = [...new Set(get)]
+                        // localStorage.setItem('watched', JSON.stringify(newGet))
                       }} key={i}>
                         <Item shoes={shoes} key={i} ></Item>
                       </Col>

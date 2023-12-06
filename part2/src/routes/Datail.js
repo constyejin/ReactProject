@@ -80,6 +80,14 @@ function Detail(props){
   let [tab, setTab] = useState(0);
   let dispatch = useDispatch();
 
+  useEffect(() => {
+    let get = localStorage.getItem('watched')
+    get = JSON.parse(get)
+    get.push(findItem.id)
+    get = new Set(get)
+    get = Array.from(get)
+    localStorage.setItem('watched', JSON.stringify(get))
+  },[])
 
   useEffect(() => {
     if(isNaN(val)) {
