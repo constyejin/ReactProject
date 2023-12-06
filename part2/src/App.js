@@ -9,6 +9,7 @@ import Cart from './routes/Cart'
 import About from './routes/About'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom';
 import axios from 'axios';
+import { type } from '@testing-library/user-event/dist/type';
 
 // Context API로 TabContent에 state 전송
 export let Context1 = createContext();
@@ -81,6 +82,10 @@ function App() {
                     return (
                       <Col onClick={() => {
                         navigate(`/detail/${shoes.id}`)
+                        let get = JSON.parse(localStorage.getItem('watched'))
+                        get.push(shoes.id)
+                        let newGet = [...new Set(get)]
+                        localStorage.setItem('watched', JSON.stringify(newGet))
                       }} key={i}>
                         <Item shoes={shoes} key={i} ></Item>
                       </Col>
