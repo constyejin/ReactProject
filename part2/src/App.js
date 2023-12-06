@@ -16,7 +16,9 @@ export let Context1 = createContext();
 
 function App() {
   useEffect(() => {
-    localStorage.setItem('watched', JSON.stringify([]))
+    if(localStorage.getItem('watched') == null) {
+      localStorage.setItem('watched', JSON.stringify([]))
+    }
   },[])
 
   // localStorage에 array, object 저장하려면 JSON으로 변환
