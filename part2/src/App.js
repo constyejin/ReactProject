@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { createContext, useEffect, useState, lazy, Suspense, useTransition } from 'react';
+import { createContext, useEffect, useState, lazy, Suspense, useTransition, useDeferredValue } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
@@ -196,7 +196,9 @@ function Improve() {
   let [name, setName] = useState('')
   // startTransition로 성능저하를 일으키는 문제 state를 감싼다.
   // isPending은 startTransition이 처리중일 때 true로 변한다.
-  let [isPending, startTransition] = useTransition()
+  let [isPending, startTransition] = useTransition();
+  // (state)에 넣은게 변동사항이 생기면 늦게 처리해준다.
+  let state = useDeferredValue(name)
 
   return(
     <div>
@@ -209,7 +211,7 @@ function Improve() {
       {
         isPending ? 'Loading...' : 
         a.map((item, i) => {
-          return <div key={i}>{name}</div>
+          return <div key={i}>{state}</div>
         })
       }
     </div>
