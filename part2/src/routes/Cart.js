@@ -1,11 +1,11 @@
 import React from 'react'
+import { useState, memo, useMemo } from 'react'
 import {Table} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName, plusAge } from '../store/userSlice';
 import { decrease, increase, removeItem } from '../store'
 
 function Cart() {
-
   // Redux store 가져오기
   // state : Redux store에 있던 모든 state
   let state = useSelector((state) => state)
@@ -18,6 +18,13 @@ function Cart() {
     {id : 1, name : '나이키 덩크 로우 프리미엄', count : 10}
   ]
   // console.log(data[0].count)
+  let [count, setCount] = useState(0)
+
+  let result = cal();
+  // 컴포넌트 렌더링시 1회만 실행한다.
+  // useEffect => HTML 로딩 끝나면 실행
+  // useMemo => 렌더링 될 때 같이 실행 (실행시점 차이)
+  useMemo(() => {return cal()}, [state])
 
   return (
     <div>
@@ -62,8 +69,22 @@ function Cart() {
           }
         </tbody>
       </Table> 
+      <Child count={count}/>
+      <button onClick={() => { setCount(count + 1) }}>BUTTON</button>
     </div>
   )
+}
+
+// 꼭 필요할 때만 재렌덜이 하려면 => memo
+// memo의 원리 : props가 변할 때만 재렌더링 해준다.
+let Child = memo( function() {
+  console.log('재렌더링')
+  return <div>자식 컴포넌트</div>
+})
+
+// useMemo 사용법
+function cal() {
+  // return 반복문 돌린 결과
 }
 
 export default Cart
