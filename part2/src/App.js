@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
-import { createContext, useEffect, useState, lazy } from 'react';
+import { createContext, useEffect, useState, lazy, Suspense } from 'react';
 import './App.css';
 import bg from './images/bg.jpeg';
 import data from './data';
@@ -84,84 +84,85 @@ function App() {
         </Container>
       </Navbar>
 
-      <Routes>
-        <Route path='/' element={
-          <>
-            <div className='main-bg'></div>
-            <Container className='shoe-list'>
-              <Row>
-                <p className='sort-list'>
-                  <span onClick={(e) => {
-                    let copy = [...shoes];
-                    let sortTitle = copy.sort((a,b) => {
-                      if(a.title > b.title) return 1;;
-                      if(a.title < b.title) return -1;
-                      return 0;
+      <Suspense>
+        <Routes>
+          <Route path='/' element={
+            <>
+              <div className='main-bg'></div>
+              <Container className='shoe-list'>
+                <Row>
+                  <p className='sort-list'>
+                    <span onClick={(e) => {
+                      let copy = [...shoes];
+                      let sortTitle = copy.sort((a,b) => {
+                        if(a.title > b.title) return 1;;
+                        if(a.title < b.title) return -1;
+                        return 0;
+                      })
+                      setShoes(sortTitle);
+                    }}>이름순</span>
+                    <span className='line'>|</span>
+                    <span onClick={() => {
+                      let copy = [...shoes];
+                      let sortPrice = copy.sort((a,b) => {
+                        if(a.price > b.price) return 1;
+                        if(a.price < b.price) return -1;
+                        return 0;
+                      })
+                      setShoes(sortPrice);
+                    }}>가격순</span>
+                  </p>
+                  {
+                    shoes.map(function(shoes, i){
+                      return (
+                        <Col onClick={() => {
+                          navigate(`/detail/${shoes.id}`)
+                          // let get = JSON.parse(localStorage.getItem('watched'))
+                          // get.push(shoes.id)
+                          // let newGet = [...new Set(get)]
+                          // localStorage.setItem('watched', JSON.stringify(newGet))
+                        }} key={i}>
+                          <Item shoes={shoes} key={i} ></Item>
+                        </Col>
+                      )
                     })
-                    setShoes(sortTitle);
-                  }}>이름순</span>
-                  <span className='line'>|</span>
-                  <span onClick={() => {
-                    let copy = [...shoes];
-                    let sortPrice = copy.sort((a,b) => {
-                      if(a.price > b.price) return 1;
-                      if(a.price < b.price) return -1;
-                      return 0;
-                    })
-                    setShoes(sortPrice);
-                  }}>가격순</span>
-                </p>
-                {
-                  shoes.map(function(shoes, i){
-                    return (
-                      <Col onClick={() => {
-                        navigate(`/detail/${shoes.id}`)
-                        // let get = JSON.parse(localStorage.getItem('watched'))
-                        // get.push(shoes.id)
-                        // let newGet = [...new Set(get)]
-                        // localStorage.setItem('watched', JSON.stringify(newGet))
-                      }} key={i}>
-                        <Item shoes={shoes} key={i} ></Item>
-                      </Col>
-                    )
+                  }
+                </Row>
+              </Container>  
+              <Button onClick={() => {
+                  axios.get('https://codingapple1.github.io/shop/data2.json')
+                  .then((result) => {
+                    // ajax 요청 성공시
+                    result.data.forEach(item => {
+                      console.log(item);
+                      item.img = 'https://mblogthumb-phinf.pstatic.net/20160728_98/ppanppane_1469696985810MaPSh_PNG/%B3%AA%C0%CC%C5%B0_%B7%CE%B0%ED_%283%29.png?type=w800';
+                    });
+                    let add = [...shoes, ...result.data];
+                    setShoes(add);
+                  }).catch(() => {
+                    // ajax 요청 실패시
+                    console.log('실패함ㅠ')
                   })
-                }
-              </Row>
-            </Container>  
-            <Button onClick={() => {
-                axios.get('https://codingapple1.github.io/shop/data2.json')
-                .then((result) => {
-                  // ajax 요청 성공시
-                  result.data.forEach(item => {
-                    console.log(item);
-                    item.img = 'https://mblogthumb-phinf.pstatic.net/20160728_98/ppanppane_1469696985810MaPSh_PNG/%B3%AA%C0%CC%C5%B0_%B7%CE%B0%ED_%283%29.png?type=w800';
-                  });
-                  let add = [...shoes, ...result.data];
-                  setShoes(add);
-                }).catch(() => {
-                  // ajax 요청 실패시
-                  console.log('실패함ㅠ')
-                })
-            }} variant="dark">MORE</Button>
-          </>
-        }/>
-        <Route path='/detail/:id' element={
-          <Context1.Provider value={{stock, shoes}}>
-            <Detail shoes={shoes}/>
-          </Context1.Provider>
-        }/>
-        <Route path='*' element={<div>404 ERROR</div>}/>
-        <Route path='/about' element={<About/>}>
-          <Route path='member' element={<div>Member</div>}></Route>
-          <Route path='location' element={<div>Location</div>}></Route>
-        </Route>
-        <Route path='/event' element={<Event/>}>
-          <Route path='one' element={<p>첫 주문시 양말 서비스</p>}/>
-          <Route path='two' element={<p>생일기념 쿠폰 받기</p>}/>
-        </Route>
-
-        <Route path='/cart' element={<Cart/>}/>
-      </Routes>
+              }} variant="dark">MORE</Button>
+            </>
+          }/>
+          <Route path='/detail/:id' element={
+            <Context1.Provider value={{stock, shoes}}>
+              <Detail shoes={shoes}/>
+            </Context1.Provider>
+          }/>
+          <Route path='*' element={<div>404 ERROR</div>}/>
+          <Route path='/about' element={<About/>}>
+            <Route path='member' element={<div>Member</div>}></Route>
+            <Route path='location' element={<div>Location</div>}></Route>
+          </Route>
+          <Route path='/event' element={<Event/>}>
+            <Route path='one' element={<p>첫 주문시 양말 서비스</p>}/>
+            <Route path='two' element={<p>생일기념 쿠폰 받기</p>}/>
+          </Route>
+          <Route path='/cart' element={<Cart/>}/>
+        </Routes>
+      </Suspense>
       {/* style={{ backgroundImage : `url(${bg})`}} */}
     </div>
   );
