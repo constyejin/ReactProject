@@ -10,3 +10,16 @@ let person = {
   age 
 }
 console.log(person)
+
+
+// 02. Destructuring
+let person2 = {
+  name2 : 'Anna',
+  age2 : 20
+}
+
+// let name2 = person2.name
+// let age2 = person2.age
+
+let {name2, age2} = person2
+console.log(name2, age2)
