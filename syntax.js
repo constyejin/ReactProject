@@ -30,5 +30,25 @@ console.log(a,b)
 console.log(rest)
 
 
+// 03. Spread
+let person3 = {
+  name3 : 'Lisa',
+  age3 : 17
+}
 
+// 객체의 깊은복사(Deep Copy)
+// 객체를 하나 더 생성하는 것 (person3와 다른 객체)
+let copyPerson1 = {...person3, name3 : 'Jimin'}
+// 객체의 주소값만 복사 (즉 객체는 하나고 그 객체를 참조하는 변수가 두 개)
+let copyPerson2 = person3
+console.log(copyPerson1)
+console.log(copyPerson2)
+console.log(person3 == copyPerson1) // false
+console.log(person3 == copyPerson2) // true
 
+let c = [1, 2];
+let d = [...c, 3, 4, 5]
+console.log(d)
+
+let e = [...c, ...d];
+console.log(e)
