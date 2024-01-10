@@ -52,3 +52,13 @@ console.log(d)
 
 let e = [...c, ...d];
 console.log(e)
+
+
+// 04. 삼항 연산자 (Ternary Operator)
+// if(person) {
+//   console.log(person.name + '님, 안녕하세요')
+// } else {
+//   console.log('There is no person.')
+// }
+ 
+console.log(person ? person.name + '님, 안녕하세요!' : 'There is no person');
