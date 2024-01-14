@@ -1,12 +1,15 @@
 import './App.css';
+import { useState } from 'react';
 import Box from './component/Box';
 
 function App() {
+  let [counter, setCounter] = useState(0);
   return (
     <div>
-      <Box name="리케" num={1}/>
-      <Box name="위글" num={2}/>
-      <Box name="이디야" num={3}/>
+      <h3>{counter}</h3>
+      <button onClick={() => {
+        setCounter(counter += 1)
+      }}>Click</button>
     </div>
   );
 }
