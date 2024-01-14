@@ -4,7 +4,8 @@ const Box = (props) => {
   console.log(props)
   return (
     <div className="box">
-      <p>Member{props.num}</p>
+      <p>Box{props.num}</p>
+      <p>{props.name}</p>
     </div>
   )
 }
