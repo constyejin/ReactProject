@@ -10,7 +10,8 @@ import Box from './component/Box';
 // (win - green, lose - red, tie - black)
 function App() {
   return (
-    <div>
+    <div className='main'>
+      <Box/>
       <Box/>
     </div>
   );
