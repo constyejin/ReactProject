@@ -11,8 +11,8 @@ import Box from './component/Box';
 function App() {
   return (
     <div className='main'>
-      <Box/>
-      <Box/>
+      <Box title="You"/>
+      <Box title="Computer"/>
     </div>
   );
 }
