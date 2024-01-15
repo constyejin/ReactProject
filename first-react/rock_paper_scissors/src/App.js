@@ -10,9 +10,17 @@ import Box from './component/Box';
 // (win - green, lose - red, tie - black)
 function App() {
   return (
-    <div className='main'>
-      <Box title="You"/>
-      <Box title="Computer"/>
+    <div>
+      <div className='center'>
+        <Box title="You"/>
+        <Box title="Computer"/>
+      </div>
+
+      <div className='center'>
+        <button>Rock</button>
+        <button>Paper</button>
+        <button>Scissors</button>
+      </div>
     </div>
   );
 }
