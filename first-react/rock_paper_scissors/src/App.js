@@ -13,15 +13,15 @@ import Box from './component/Box';
 const choice = {
   rock : {
     name : "Rock",
-    img : "https://image.auction.co.kr/itemimage/28/65/8e/28658ea541.jpg"
+    img : "https://yun7420.github.io/rockscissorspaper-2023/static/media/rock.36e4f20e544680d5d7db.png"
   },
   scissors : {
     name : "Scissors",
-    img : "https://image.yes24.com/momo/TopCate3686/MidCate6/368554599.jpg"
+    img : "https://yun7420.github.io/rockscissorspaper-2023/static/media/scissors.89d557044c485b55ba7c.png"
   },
   paper : {
     name : "Paper",
-    img : "https://img.chuing.net/i/HGeNNJp/slider-pic-102.png"
+    img : "https://yun7420.github.io/rockscissorspaper-2023/static/media/paper.d7fa16464d6c5c437fc5.png"
   }
 }
 
