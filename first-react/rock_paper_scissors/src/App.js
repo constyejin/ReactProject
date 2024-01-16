@@ -13,7 +13,7 @@ import Box from './component/Box';
 const choice = {
   rock : {
     name : "Rock",
-    img : "https://yun7420.github.io/rockscissorspaper-2023/static/media/rock.36e4f20e544680d5d7db.png"
+    img : "https://toppng.com/uploads/preview/rock-paper-scissors-circle-11562962494dqcjusyikw.png"
   },
   scissors : {
     name : "Scissors",
@@ -72,16 +72,17 @@ function App() {
   }
  
   return (
-    <div>
-      <div className='center'>
-        <Box title="You" item={userSelect} result={result} />
-        <Box title="Computer" item={computerSelect} result={comResult} />
-      </div>
-
-      <div className='center btn-list'>
-        <button onClick={() => {play("rock")}}>Rock</button>
-        <button onClick={() => {play("paper")}}>Paper</button>
-        <button onClick={() => {play("scissors")}}>Scissors</button>
+    <div className='wrapper'>
+      <div className='main-box'>
+        <div className='main-box-list'>
+          <Box title="User" item={userSelect} result={result} />
+          <Box title="Computer" item={computerSelect} result={comResult} />
+        </div>
+        <div className="btn-list">
+          <button onClick={() => {play("rock")}}>Rock</button>
+          <button onClick={() => {play("paper")}}>Paper</button>
+          <button onClick={() => {play("scissors")}}>Scissors</button>
+        </div>
       </div>
     </div>
   );
