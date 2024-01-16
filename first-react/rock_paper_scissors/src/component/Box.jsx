@@ -6,7 +6,7 @@ const Box = (props) => {
       <h1>{props.title}</h1>
       {/* props.item && props.item.img */}
       <img src={props.item?.img} alt="" />
-      <h3>WIN</h3>
+      <h3>{props.result}</h3>
     </div>
   )
 }
