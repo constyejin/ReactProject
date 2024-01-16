@@ -27,16 +27,26 @@ const choice = {
 
 function App() {
   const [userSelect, setUserSelect] = useState(null);
+  const [computerSelect, setComputerSelect] = useState(null);
 
   const play = (userChoice) => {
     setUserSelect(choice[userChoice])
+    let computerChoice = ramdomChoice();
+  }
+
+  const ramdomChoice = () => {
+    // Object.keys : 객체의 key값을 뽑아서 array로 만들어준다.
+    let itemArr = Object.keys(choice);
+    // 0부터 1사이의 랜덤 값 출력
+    let randomItem = Math.floor(Math.random() * (0 + 3) + 0);
+    setComputerSelect(itemArr[randomItem])
   }
 
   return (
     <div>
       <div className='center'>
         <Box title="You" item={userSelect}/>
-        <Box title="Computer"/>
+        <Box title="Computer" item={computerSelect}/>
       </div>
 
       <div className='center'>
