@@ -32,14 +32,17 @@ function App() {
   const play = (userChoice) => {
     setUserSelect(choice[userChoice])
     let computerChoice = ramdomChoice();
+    setComputerSelect(computerChoice);
   }
 
   const ramdomChoice = () => {
     // Object.keys : 객체의 key값을 뽑아서 array로 만들어준다.
     let itemArr = Object.keys(choice);
-    // 0부터 1사이의 랜덤 값 출력
-    let randomItem = Math.floor(Math.random() * (0 + 3) + 0);
-    setComputerSelect(itemArr[randomItem])
+    // Math.floor() : 소수점 아래 숫자 제거
+    // Math.random() : 0부터 1사이의 랜덤 값 출력
+    let randomItem = Math.floor(Math.random() * itemArr.length);
+    let final = itemArr[randomItem]
+    return choice[final];
   }
 
   return (
