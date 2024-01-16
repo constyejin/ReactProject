@@ -29,6 +29,7 @@ function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [computerSelect, setComputerSelect] = useState(null);
   const [result, setResult] = useState("");
+  const [comResult, setComresult] = useState("");
 
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
@@ -36,7 +37,9 @@ function App() {
     let computerChoice = ramdomChoice();
     setComputerSelect(computerChoice);
 
-    setResult(judgement(choice[userChoice], computerChoice))
+    let userResult = judgement(choice[userChoice], computerChoice);
+    setResult(userResult);
+    setComresult(comJudgment(result))
   }
 
   const ramdomChoice = () => {
@@ -57,18 +60,22 @@ function App() {
     // user가 Scissors일 때 computer가 Rock이면 user LOSE
     // user가 Paper일 때 computer가 Rock이면 user WIN
     // user가 Paper일 때 computer가 Scissors면 user LOSE
-
     if(user.name == computer.name) {
       return "tie"
     } else if(user.name == "Rock") return computer.name == "Scissors" ? "win" : "lose"
     else if(user.name == "Scissors") return computer.name == "Paper" ? "win" : "lose"
     else if(user.name == "Paper") return computer.name == "Rock" ? "win" : "lose"
   }
+
+  const comJudgment = (result) => {
+    return result == "win" ? "lose" : result == "tie" ? "tie" : "win";
+  }
+ 
   return (
     <div>
       <div className='center'>
         <Box title="You" item={userSelect} result={result} />
-        <Box title="Computer" item={computerSelect} result={result} />
+        <Box title="Computer" item={computerSelect} result={comResult} />
       </div>
 
       <div className='center btn-list'>
