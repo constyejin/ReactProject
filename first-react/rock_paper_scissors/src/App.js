@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Box from './component/Box';
 
@@ -8,18 +9,40 @@ import Box from './component/Box';
 // 5. 3,4의 결과를 가지고 승패를 따진다.
 // 6. 승패 결과에 따라 border-color를 변경한다. 
 // (win - green, lose - red, tie - black)
+
+const choice = {
+  rock : {
+    name : "Rock",
+    img : "https://image.auction.co.kr/itemimage/28/65/8e/28658ea541.jpg"
+  },
+  scissors : {
+    name : "Scissors",
+    img : "https://image.yes24.com/momo/TopCate3686/MidCate6/368554599.jpg"
+  },
+  paper : {
+    name : "Paper",
+    img : "https://img.chuing.net/i/HGeNNJp/slider-pic-102.png"
+  }
+}
+
 function App() {
+  const [userSelect, setUserSelect] = useState(null);
+
+  const play = (userChoice) => {
+    setUserSelect(choice[userChoice])
+  }
+
   return (
     <div>
       <div className='center'>
-        <Box title="You"/>
+        <Box title="You" item={userSelect}/>
         <Box title="Computer"/>
       </div>
 
       <div className='center'>
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
+        <button onClick={() => {play("rock")}}>Rock</button>
+        <button onClick={() => {play("paper")}}>Paper</button>
+        <button onClick={() => {play("scissors")}}>Scissors</button>
       </div>
     </div>
   );
