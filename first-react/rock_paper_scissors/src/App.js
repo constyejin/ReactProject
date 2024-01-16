@@ -36,7 +36,7 @@ function App() {
     let computerChoice = ramdomChoice();
     setComputerSelect(computerChoice);
 
-    judgement(choice[userChoice], computerChoice)
+    setResult(judgement(choice[userChoice], computerChoice))
   }
 
   const ramdomChoice = () => {
@@ -71,7 +71,7 @@ function App() {
         <Box title="Computer" item={computerSelect} result={result} />
       </div>
 
-      <div className='center'>
+      <div className='center btn-list'>
         <button onClick={() => {play("rock")}}>Rock</button>
         <button onClick={() => {play("paper")}}>Paper</button>
         <button onClick={() => {play("scissors")}}>Scissors</button>
