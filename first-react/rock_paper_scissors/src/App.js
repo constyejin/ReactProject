@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Main from './component/Main';
 import Score from './component/Score';
+import Buttons from './component/Buttons';
 
 // 1. 박스 2개 (타이틀, 사진, 결과)
 // 2. 가위, 바위, 보 버튼이 있다.
@@ -80,11 +81,7 @@ function App() {
           <Main title="User" item={userSelect} result={result} />
           <Main title="Computer" item={computerSelect} result={comResult} />
         </div>
-        <div className="btn-list">
-          <button onClick={() => {play("rock")}}>Rock</button>
-          <button onClick={() => {play("paper")}}>Paper</button>
-          <button onClick={() => {play("scissors")}}>Scissors</button>
-        </div>
+        <Buttons play={play}/>
       </div>
     </div>
   );
