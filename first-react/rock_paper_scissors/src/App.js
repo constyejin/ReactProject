@@ -15,7 +15,7 @@ import Buttons from './component/Buttons';
 const choice = {
   rock : {
     name : "Rock",
-    img : "https://toppng.com/uploads/preview/rock-paper-scissors-circle-11562962494dqcjusyikw.png"
+    img : "https://yun7420.github.io/rockscissorspaper-2023/static/media/rock.36e4f20e544680d5d7db.png",
   },
   scissors : {
     name : "Scissors",
@@ -41,7 +41,7 @@ function App() {
 
     let userResult = judgement(choice[userChoice], computerChoice);
     setResult(userResult);
-    setComresult(comJudgment(result))
+    setComresult(comJudgment(userResult))
   }
 
   const ramdomChoice = () => {
@@ -81,7 +81,7 @@ function App() {
           <Main title="User" item={userSelect} result={result} />
           <Main title="Computer" item={computerSelect} result={comResult} />
         </div>
-        <Buttons play={play}/>
+        <Buttons play={play} choice={choice} />
       </div>
     </div>
   );
