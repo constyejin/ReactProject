@@ -1,5 +1,10 @@
 * {
   box-sizing: border-box;
+  color: #555;
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
@@ -39,12 +44,26 @@ body {
 
 .score {
   display: flex;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.score h3 {
+  margin-right: 8px;
+}
+
+.reset-btn {
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
 }
 
 .main-box-list {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 20px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
@@ -64,7 +83,7 @@ body {
   height: 80px;
   margin-right: 8px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 20px;
   overflow: hidden;
   background-color: #fff;
 }
