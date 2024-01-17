@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Score = () => {
+const Score = (props) => {
   return (
     <div className='score-box'>
       <div className="score">
-        <p>1</p>
+        <p>{props.user}</p>
         <p> : </p>
-        <p>0</p>
+        <p>{props.computer}</p>
       </div>
-      <button>Reset</button>
+      <button className='reset-btn'>Reset</button>
     </div>
   )
 }
