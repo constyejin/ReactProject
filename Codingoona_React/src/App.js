@@ -1,6 +1,8 @@
 import './App.css';
 import { useState } from 'react';
 import Box from './component/Box';
+import AppClass from './AppClass';
+import BoxClass from './component/BoxClass';
 
 function App() {
   let counter = 0;
@@ -18,9 +20,11 @@ function App() {
   }
   return (
     <div>
-      <h3>{counter}</h3>
+      {/* <h3>{counter}</h3>
       <h3>state : {counter2}</h3>
-      <button onClick={increase}>Click</button>
+      <button onClick={increase}>Click</button> */}
+
+      <AppClass />
     </div>
   );
 }
