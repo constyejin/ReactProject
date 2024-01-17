@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Box from './component/Box';
 import AppClass from './AppClass';
 import BoxClass from './component/BoxClass';
@@ -16,16 +16,25 @@ function App() {
     // 함수가 끝날 때 까지 기다렸다가 state 바꾸는 함수들을 모아서 한번에 실행한다.
     // 변수는 동기적으로 작동하기 때문에 값이 바뀌면 바로 적용된다.
     setCounter2( counter2 += 1 );
-    console.log("counter는", counter, "counter2 state는", counter2);
+    // console.log("counter는", counter, "counter2 state는", counter2);
   }
   
+  useEffect(() => {
+    console.log("useEffect1 Fire")
+  }, [])
+
+  // update된 state값 = componentDidUpdate
+  useEffect(() => {
+    console.log("useEffect2 Firee", counter2)
+  }, [counter2])
   return (
     <div>
-      {/* <h3>{counter}</h3>
+      {console.log("render")}
+      <h3>{counter}</h3>
       <h3>state : {counter2}</h3>
-      <button onClick={increase}>Click</button> */}
+      <button onClick={increase}>Click</button>
 
-      <AppClass />
+      {/* <AppClass /> */}
     </div>
   );
 }
