@@ -32,8 +32,9 @@ function App() {
   const [computerSelect, setComputerSelect] = useState(null);
   const [result, setResult] = useState("");
   const [comResult, setComresult] = useState("");
-  const [userScore, setUserScore] = useState(0);
-  const [comScore, setComScore] = useState(0);
+  // const [userScore, setUserScore] = useState(0);
+  // const [comScore, setComScore] = useState(0);
+  const [score, setScore] = useState({userScore : 0, comScore : 0});
 
   const play = (userChoice) => {
     setUserSelect(choice[userChoice]);
@@ -48,9 +49,15 @@ function App() {
     // 유저가 이겼을 때 userScore + 1
     // 컴퓨터가 이겼을 때 comScore + 1
     if(userResult == "win") {
-      setUserScore(userScore + 1)
+      setScore({
+        ...score,
+        userScore : score.userScore + 1
+      })
     } else if(userResult == "lose") {
-      setComScore(comScore + 1)
+      setScore({
+        ...score,
+        comScore : score.comScore + 1
+      })
     }
   }
 
@@ -86,7 +93,7 @@ function App() {
   return (
     <div className='wrapper'>
       <div className='main-box'>
-        <Score user={userScore} computer={comScore}/>
+        <Score score={score} setScore={setScore}/>
         <div className='main-box-list'>
           <Main title="User" item={userSelect} result={result} />
           <Main title="Computer" item={computerSelect} result={comResult} />
