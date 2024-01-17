@@ -74,6 +74,14 @@ function App() {
   return (
     <div className='wrapper'>
       <div className='main-box'>
+        <div className='score-box'>
+          <div className="score">
+            <p>1</p>
+            <p> : </p>
+            <p>0</p>
+          </div>
+         <button>Reset</button>
+        </div>
         <div className='main-box-list'>
           <Box title="User" item={userSelect} result={result} />
           <Box title="Computer" item={computerSelect} result={comResult} />

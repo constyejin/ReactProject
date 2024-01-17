@@ -30,6 +30,17 @@ body {
   box-shadow: -5px 5px 1cqmax rgb(71, 71, 71);
 }
 
+.score-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.score {
+  display: flex;
+}
+
 .main-box-list {
   display: flex;
   justify-content: center;
