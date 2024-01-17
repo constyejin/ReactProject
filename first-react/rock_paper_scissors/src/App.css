@@ -27,7 +27,7 @@ body {
   padding: 30px;
   border-radius: 12px;
   background-color: #fff;
-  box-shadow: -5px 5px 1cqmax rgb(71, 71, 71);
+  box-shadow: 5px 5px 10px rgb(71, 71, 71);
 }
 
 .score-box {
@@ -55,13 +55,28 @@ body {
   object-fit: cover;
 }
 
+.btn-list {
+  margin-top: 30px;
+}
+
 .btn-list button {
-  padding: 10px 20px;
-  border: none;
+  width: 80px;
+  height: 80px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  color: #fff;
-  background-color: #888;
-  font-weight: 700;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.btn-list button:last-child {
+  margin-right: 0;
+}
+
+.btn-list button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .win {
