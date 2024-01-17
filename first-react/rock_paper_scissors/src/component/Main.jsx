@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Box = (props) => {
+const Main = (props) => {
   return (
     <div className="main-box-item">
       <h2>{props.title}</h2>
@@ -11,4 +11,4 @@ const Box = (props) => {
   )
 }
 
-export default Box
+export default Main
