@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import Box from './component/Box';
+import Main from './component/Main';
+import Score from './component/Score';
 
 // 1. 박스 2개 (타이틀, 사진, 결과)
 // 2. 가위, 바위, 보 버튼이 있다.
@@ -74,17 +75,10 @@ function App() {
   return (
     <div className='wrapper'>
       <div className='main-box'>
-        <div className='score-box'>
-          <div className="score">
-            <p>1</p>
-            <p> : </p>
-            <p>0</p>
-          </div>
-         <button>Reset</button>
-        </div>
+        <Score />
         <div className='main-box-list'>
-          <Box title="User" item={userSelect} result={result} />
-          <Box title="Computer" item={computerSelect} result={comResult} />
+          <Main title="User" item={userSelect} result={result} />
+          <Main title="Computer" item={computerSelect} result={comResult} />
         </div>
         <div className="btn-list">
           <button onClick={() => {play("rock")}}>Rock</button>
