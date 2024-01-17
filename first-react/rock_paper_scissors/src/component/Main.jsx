@@ -4,8 +4,9 @@ const Main = (props) => {
   return (
     <div className="main-box-item">
       <h2>{props.title}</h2>
-      {/* props.item && props.item.img */}
-      <img src={props.item?.img} alt="" />
+      {
+        props.item ? <img src={props.item?.img} alt={props.item?.name} /> : null
+      }
       <h4 className={props.result}>{props.result}</h4>
     </div>
   )
